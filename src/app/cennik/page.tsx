@@ -79,10 +79,10 @@ export default function Cennik() {
               },
               {
                 title: "MultiPage",
-                desc: "Rozbudowana strona dla firmy",
-                price: "od 1900 zł",
+                desc: "Standardowa strona dla firmy",
+                price: "od 1500 zł",
                 features: [
-                  "Indywidualna liczba podstron (w zależności od potrzeb)",
+                  "Indywidualna liczba podstron (do 5 podstron)",
                   "Indywidualny projekt graficzny",
                   "Wersja mobilna",
                   "Optymalizacja SEO",
@@ -101,12 +101,12 @@ export default function Cennik() {
                 ],
               },
               {
-                title: "Szablon",
-                desc: "Rozbudowana strona w dobrej cenie",
-                price: "od 1200 zł",
+                title: "MultiPage Pro",
+                desc: "Rozbudowana strona dla firmy",
+                price: "od 1900 zł",
                 features: [
                   "Indywidualna liczba podstron (w zależności od potrzeb)",
-                  "Wybrany szablon WordPress",
+                  "Indywidualny projekt graficzny",
                   "Wersja mobilna",
                   "Optymalizacja SEO",
                   "Panel zarządzania stroną",
@@ -119,7 +119,7 @@ export default function Cennik() {
                   "Polityka prywatności",
                   "Formularz kontaktowy",
                   "Firmowa skrzynka e-mail",
-                  "Pomoc techniczna na 6 miesięcy",
+                  "Pomoc techniczna na 12 miesięcy",
                   "Blog/Aktualności",
                 ],
               },
@@ -193,7 +193,7 @@ export default function Cennik() {
               {
                 title: "Sklep Start",
                 desc: "Sklep internetowy + strona wizytówkowa",
-                price: "od 1900 zł",
+                price: "od 1600 zł",
                 features: [
                   "Podstrony: 1",
                   "Integracja z bramkami płatności online",
@@ -217,7 +217,7 @@ export default function Cennik() {
               {
                 title: "Sklep Standard",
                 desc: "Sklep internetowy + strona Multipage",
-                price: "od 2500 zł",
+                price: "od 1900 zł",
                 features: [
                   "Indywidualna liczba podstron (w zależności od potrzeb)",
                   "Integracja z bramkami płatności online",
@@ -240,9 +240,9 @@ export default function Cennik() {
                 ],
               },
               {
-                title: "Sklep Szablon",
-                desc: "Sklep internetowy + strona Szablon",
-                price: "od 2000 zł",
+                title: "Sklep Pro",
+                desc: "Sklep internetowy + strona Multipage Pro",
+                price: "od 2300 zł",
                 features: [
                   "Indywidualna liczba podstron (w zależności od potrzeb)",
                   "Integracja z bramkami płatności online",
