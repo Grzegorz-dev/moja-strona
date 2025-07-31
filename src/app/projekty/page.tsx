@@ -60,7 +60,7 @@ export default function Projekty() {
               loading="lazy"
             />
             <div className={styles.gallerytext}>
-              <a href="https://odjazdowapasieka.pl/" target="_blank" rel="noopener noreferrer">
+              <a href="https://logopedycznagloska.pl/" target="_blank" rel="noopener noreferrer">
                 <FaArrowRight className={styles.strzalka} /> Zobacz pełną wersję strony
               </a>
             </div>
