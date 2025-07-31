@@ -53,6 +53,21 @@ export default function Projekty() {
         <section className={styles.gallery} id="firstProject">
           <div className={styles.galleryGrid}>
             <Image
+              src="/images/portfolio/projekt-strony-gabinet-logopedyczny-responsive.webp"
+              alt="Responsywny projekt strony internetowej gabinetu logopedycznego dla dzieci i młodzieży, wyświetlany na różnych urządzeniach: komputerze, laptopie, tablecie i smartfonie"
+              width="2085"
+              height="1527"
+              loading="lazy"
+            />
+            <div className={styles.gallerytext}>
+              <a href="https://odjazdowapasieka.pl/" target="_blank" rel="noopener noreferrer">
+                <FaArrowRight className={styles.strzalka} /> Zobacz pełną wersję strony
+              </a>
+            </div>
+          </div>
+
+          <div className={styles.galleryGrid}>
+            <Image
               src="/images/portfolio/projekt-strony-pasieki-na-urzadzeniach.webp"
               alt="Responsywna strona internetowa dla pasieki – projekt sklepu online z miodem wyświetlony na laptopie, komputerze, tablecie i smartfonie"
               width="2085"
