@@ -150,13 +150,13 @@ export default function Home() {
             <p>Funkcjonalne sklepy z prostym panelem zarządzania i szybkim działaniem.</p>
           </Link>
 
-          <Link href="/stronywww" className={styles.serviceCard}>
+          <Link href="/aplikacje" className={styles.serviceCard}>
             <FaMobileAlt className={styles.serviceIcon} />
             <h3>Aplikacje mobilne</h3>
             <p>Tworzę nowoczesne aplikacje mobilne na Android i iOS.</p>
           </Link>
 
-          <Link href="/stronywww" className={styles.serviceCard}>
+          <Link href="/" className={styles.serviceCard}>
             <FaPaintBrush className={styles.serviceIcon} />
             <h3>Grafika</h3>
             <p>Logo, identyfikacja wizualna, banery i materiały reklamowe.</p>
