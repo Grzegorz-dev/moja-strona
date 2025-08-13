@@ -5,7 +5,8 @@ import Menu from "./Menu";
 import AnimationWrapper from "./AnimationWrapper";
 import Link from 'next/link';
 import Image from 'next/image';
-import Head from 'next/head'
+import Head from 'next/head';
+import Script from 'next/script'
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -18,30 +19,70 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pl">
-        <Head>
-        <script
+     <head>
+        {/* 1) Cookie Consent - skrypt biblioteki */}
+        <Script
+          src="https://www.termsfeed.com/public/cookie-consent/4.2.0/cookie-consent.js"
+          charSet="UTF-8"
+          strategy="afterInteractive"
+        />
+
+        {/* 2) Cookie Consent - inicjalizacja (PL, link do polityki) */}
+        <Script
+          id="cookieconsent-init"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id=GTM-P8RFGTW9'+dl;
-            f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-P8RFGTW9');`,
+            __html: `
+              document.addEventListener('DOMContentLoaded', function () {
+                cookieconsent.run({
+                  notice_banner_type: "simple",
+                  consent_type: "express",
+                  palette: "light",
+                  language: "pl",
+                  page_load_consent_levels: ["strictly-necessary"],
+                  notice_banner_reject_button_hide: false,
+                  preferences_center_close_button_hide: false,
+                  page_refresh_confirmation_buttons: false,
+                  website_name: "Grzegorz Słowiaczek",
+                  website_privacy_policy_url: "https://atelier-nieruchomosci.pl/privacy_policy"
+                });
+              });
+            `,
           }}
         />
-      </Head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-P8RFGTW9"
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
-        <AnimationWrapper>
-          <Menu />
-          {children}
+
+        {/* 3) GTM/Gtag – ZABLOKOWANY do czasu zgody.
+              Uwaga: next/script nie pozwala dodać type="text/plain",
+              dlatego tutaj zwykły <script> z atrybutami TermsFeed. */}
+        <script
+          type="text/plain"
+          data-cookie-consent="tracking"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id=GTM-P8RFGTW9'+dl;
+              f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-P8RFGTW9');
+            `,
+          }}
+        />
+        {/* NIE dodawaj tu żadnego innego GA/GTM bez blokady,
+            bo załaduje się przed zgodą. */}
+      </head>
+
+      <body>
+        {/* 4) NIE renderuj noscript-iframe GTM bez zgody:
+              usuń go, bo iframe odpala się zawsze.
+              Jeśli koniecznie chcesz noscript, warunkowo pokaż go dopiero po zgodzie. */}
+
+        {children}
+
+        {/* 5) Link do preferencji (możesz przenieść do stopki) */}
+        <a href="#" id="open_preferences_center" style={{display:'block',margin:'1rem 0'}}>
+          Zmień ustawienia plików cookies
+        </a>
 
           <footer className="footer">
             <div className="footer-container">
@@ -86,3 +127,4 @@ export default function RootLayout({
     </html>
   );
 }
+
