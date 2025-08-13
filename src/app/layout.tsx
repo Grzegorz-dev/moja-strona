@@ -5,14 +5,7 @@ import Menu from "./Menu";
 import AnimationWrapper from "./AnimationWrapper";
 import Link from 'next/link';
 import Image from 'next/image';
-import Head from 'next/head';
-import Script from "next/script";
-
-declare global {
-  interface Window {
-    cookieconsent?: { run: (config: Record<string, unknown>) => void };
-  }
-}
+import Head from 'next/head'
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -89,36 +82,6 @@ export default function RootLayout({
             </div>
           </footer>
         </AnimationWrapper>
-
-        {/* --- TermsFeed Cookie Consent --- */}
-        <Script
-          id="tf-cookie-lib"
-          src="https://www.termsfeed.com/public/cookie-consent/4.2.0/cookie-consent.js"
-          strategy="afterInteractive"
-          onLoad={() => {
-            if (typeof window !== 'undefined' && window.cookieconsent) {
-              window.cookieconsent.run({
-                notice_banner_type: "simple",
-                consent_type: "express",
-                palette: "light",
-                language: "pl",
-                page_load_consent_levels: ["strictly-necessary"],
-                notice_banner_reject_button_hide: false,
-                preferences_center_close_button_hide: false,
-                page_refresh_confirmation_buttons: false,
-                website_name: "Grzegorz Słowiaczek",
-                website_privacy_policy_url: "https://atelier-nieruchomosci.pl/privacy_policy", // podmień na swój URL
-              });
-            }
-          }}
-        />
-
-        {/* Noscript info od TermsFeed (widoczne tylko bez JS) */}
-        <noscript>
-          Free cookie consent management tool by{" "}
-          <a href="https://www.termsfeed.com/">TermsFeed</a>
-        </noscript>
-        {/* --- /TermsFeed Cookie Consent --- */}
       </body>
     </html>
   );
