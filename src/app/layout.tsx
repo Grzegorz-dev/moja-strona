@@ -98,17 +98,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <a href="https://www.termsfeed.com/">TermsFeed</a>
         </noscript>
 
-        {/* 1) biblioteka */}
         <Script
           id="tf-cookie-lib"
           src="https://www.termsfeed.com/public/cookie-consent/4.2.0/cookie-consent.js"
           strategy="afterInteractive"
-        />
-
-        {/* 2) inicjalizacja (bez DOMContentLoaded, Next zrobi timing) */}
-        <Script id="tf-cookie-init" strategy="afterInteractive">
-          {`
-            if (typeof window !== 'undefined' && window.cookieconsent) {
+          onLoad={() => {
+            // 100% pewności, że biblioteka już jest
+            // @ts-expect-error: global z biblioteki
+            if (window.cookieconsent && typeof window.cookieconsent.run === 'function') {
+              // @ts-expect-error
               window.cookieconsent.run({
                 notice_banner_type: "simple",
                 consent_type: "express",
@@ -121,9 +119,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 website_name: "Grzegorz Słowiaczek",
                 website_privacy_policy_url: "https://atelier-nieruchomosci.pl/privacy_policy"
               });
+            } else {
+              console.warn('CookieConsent lib loaded but window.cookieconsent is missing');
             }
-          `}
-        </Script>
+          }}
+        />
+
         {/* /TermsFeed Cookie Consent */}
       </body>
     </html>
