@@ -90,22 +90,20 @@ export default function RootLayout({
           src="https://www.termsfeed.com/public/cookie-consent/4.2.0/cookie-consent.js"
           strategy="afterInteractive"
           onLoad={() => {
-            // uruchamiamy po załadowaniu biblioteki (bez DOMContentLoaded)
-            // skopiowane z Twojej konfiguracji:
-            // UWAGA: zaktualizuj URL polityki jeśli potrzeba
-            // @ts-ignore
-            window.cookieconsent?.run({
-              notice_banner_type: "simple",
-              consent_type: "express",
-              palette: "light",
-              language: "pl",
-              page_load_consent_levels: ["strictly-necessary"],
-              notice_banner_reject_button_hide: false,
-              preferences_center_close_button_hide: false,
-              page_refresh_confirmation_buttons: false,
-              website_name: "Grzegorz Słowiaczek",
-              website_privacy_policy_url: "https://atelier-nieruchomosci.pl/privacy_policy"
-            });
+            if (typeof window !== 'undefined' && window.cookieconsent) {
+              window.cookieconsent.run({
+                notice_banner_type: "simple",
+                consent_type: "express",
+                palette: "light",
+                language: "pl",
+                page_load_consent_levels: ["strictly-necessary"],
+                notice_banner_reject_button_hide: false,
+                preferences_center_close_button_hide: false,
+                page_refresh_confirmation_buttons: false,
+                website_name: "Grzegorz Słowiaczek",
+                website_privacy_policy_url: "https://atelier-nieruchomosci.pl/privacy_policy", // podmień na swój URL
+              });
+            }
           }}
         />
 
