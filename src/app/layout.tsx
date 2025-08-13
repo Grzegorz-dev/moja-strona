@@ -8,6 +8,12 @@ import Link from "next/link";
 import Image from "next/image";
 import Script from "next/script";
 
+declare global {
+  interface Window {
+    cookieconsent?: { run: (config: Record<string, unknown>) => void };
+  }
+}
+
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
