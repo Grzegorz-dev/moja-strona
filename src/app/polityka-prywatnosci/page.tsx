@@ -34,79 +34,84 @@ export default function PolitykaPrywatnosci() {
   return (
     <main>
       <section className="polityka">
-        <h1>Polityka Prywatności i Plików Cookies</h1>
+        <h1>Polityka Prywatności</h1>
 
-        <h2>1. Administrator danych osobowych</h2>
-        <p>Administratorem danych osobowych jest:<br />
-        <strong>Grzegorz Słowiaczek</strong><br />
-        kontakt@slowiaczek.pl<br />
-        ul. Przykładowa 1, 00-000 Miasto</p>
+        <p>Niniejsza Polityka Prywatności określa zasady przetwarzania i ochrony danych osobowych Użytkowników korzystających ze strony internetowej <strong>slowiaczek.pl</strong> (dalej „Serwis”).</p>
 
-        <h2>2. Jakie dane zbieramy?</h2>
-        <p>Zbieramy dane wyłącznie w zakresie niezbędnym do świadczenia usług i obsługi użytkowników:</p>
+        <h1>1. Postanowienia ogólne</h1>
+        <p>Administratorem danych osobowych jest <strong>Grzegorz Słowiaczek</strong>, z siedzibą w <strong>Polsce</strong>, e-mail: <a href="mailto:kontakt@slowiaczek.pl">kontakt@slowiaczek.pl</a>, telefon: 883 081 448 (dalej „Administrator”).</p>
+        <p>Administrator przetwarza dane osobowe zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 (RODO) oraz innymi obowiązującymi przepisami prawa.</p>
+
+        <h1>2. Zakres zbieranych danych</h1>
+        <p>Administrator może przetwarzać następujące dane Użytkownika:</p>
         <ul>
-          <li>imię i nazwisko,</li>
+          <li>imię i nazwisko lub nazwa firmy,</li>
           <li>adres e-mail,</li>
           <li>numer telefonu,</li>
-          <li>treść wiadomości z formularza kontaktowego,</li>
-          <li>dane potrzebne do realizacji płatności (np. w przypadku subskrypcji).</li>
+          <li>adres IP,</li>
+          <li>informacje przekazane dobrowolnie w formularzach kontaktowych,</li>
+          <li>dane techniczne dotyczące urządzenia i przeglądarki (typ urządzenia, system operacyjny, wersja przeglądarki).</li>
         </ul>
 
-        <h2>3. Cel i podstawa przetwarzania danych</h2>
-        <p>Dane są przetwarzane w celu:</p>
+        <h1>3. Cele przetwarzania danych</h1>
         <ul>
-          <li>udzielenia odpowiedzi na zapytania (art. 6 ust. 1 lit. f RODO – uzasadniony interes),</li>
-          <li>realizacji usług i zamówień (art. 6 ust. 1 lit. b RODO – wykonanie umowy),</li>
-          <li>obsługi płatności (np. Stripe, PayNow),</li>
-          <li>marketingu bezpośredniego (za zgodą).</li>
+          <li>udzielanie odpowiedzi na zapytania przesłane przez formularze kontaktowe lub e-mail,</li>
+          <li>przygotowanie ofert handlowych dotyczących tworzenia stron, aplikacji lub usług wsparcia technicznego,</li>
+          <li>realizacja usług zawartych w umowie,</li>
+          <li>prowadzenie rozliczeń i księgowości,</li>
+          <li>prowadzenie marketingu własnych usług (np. newsletter – jeśli wyrażono zgodę),</li>
+          <li>zapewnienie bezpieczeństwa Serwisu oraz analizowanie statystyk odwiedzin (np. Google Analytics).</li>
         </ul>
 
-        <h2>4. Czas przechowywania danych</h2>
-        <p>Twoje dane będą przechowywane:</p>
+        <h1>4. Podstawa prawna przetwarzania danych</h1>
         <ul>
-          <li>przez okres kontaktu + 12 miesięcy,</li>
-          <li>w przypadku zakupu – przez czas wymagany przez przepisy podatkowe (do 6 lat).</li>
+          <li>art. 6 ust. 1 lit. b RODO – niezbędność do wykonania umowy lub podjęcia działań na żądanie Użytkownika,</li>
+          <li>art. 6 ust. 1 lit. c RODO – obowiązki prawne (np. księgowe, podatkowe),</li>
+          <li>art. 6 ust. 1 lit. f RODO – prawnie uzasadniony interes Administratora (np. marketing bezpośredni),</li>
+          <li>art. 6 ust. 1 lit. a RODO – zgoda Użytkownika (np. newsletter, cookies).</li>
         </ul>
 
-        <h2>5. Udostępnianie danych</h2>
-        <p>Nie udostępniamy Twoich danych osobom trzecim, chyba że:</p>
+        <h1>5. Odbiorcy danych</h1>
+        <p>Dane osobowe mogą być przekazywane:</p>
         <ul>
-          <li>wymagają tego przepisy prawa,</li>
-          <li>jest to niezbędne do realizacji płatności (np. operatorzy płatności).</li>
+          <li>dostawcom hostingu i usług IT,</li>
+          <li>firmom księgowym,</li>
+          <li>kancelariom prawnym,</li>
+          <li>dostawcom narzędzi analitycznych i marketingowych (np. Google),</li>
+          <li>innym podmiotom, jeśli wynika to z przepisów prawa.</li>
         </ul>
 
-        <h2>6. Twoje prawa</h2>
-        <p>Masz prawo do:</p>
+        <h1>6. Okres przechowywania danych</h1>
+        <ul>
+          <li>Dane przetwarzane w celu realizacji umowy – do czasu przedawnienia roszczeń,</li>
+          <li>Dane przetwarzane na podstawie zgody – do czasu jej wycofania,</li>
+          <li>Dane księgowe – przez okres wymagany przepisami (np. 5 lat w Polsce).</li>
+        </ul>
+
+        <h1>7. Prawa Użytkownika</h1>
+        <p>Użytkownik ma prawo do:</p>
         <ul>
           <li>dostępu do swoich danych,</li>
-          <li>ich sprostowania, usunięcia lub ograniczenia przetwarzania,</li>
+          <li>sprostowania danych,</li>
+          <li>usunięcia danych („prawo do bycia zapomnianym”),</li>
+          <li>ograniczenia przetwarzania,</li>
+          <li>przenoszenia danych,</li>
           <li>sprzeciwu wobec przetwarzania,</li>
-          <li>wniesienia skargi do Prezesa UODO.</li>
+          <li>cofnięcia zgody w dowolnym momencie.</li>
         </ul>
+        <p>W celu realizacji powyższych praw należy wysłać wiadomość na adres: <a href="mailto:kontakt@slowiaczek.pl">kontakt@slowiaczek.pl</a>.</p>
 
-        <h2>Polityka Plików Cookies</h2>
+        <h1>8. Pliki cookies</h1>
+        <p>Serwis wykorzystuje pliki cookies w celu zapewnienia prawidłowego działania, personalizacji treści oraz analizy statystyk odwiedzin. Użytkownik może zarządzać plikami cookies w ustawieniach przeglądarki.</p>
+        <p>Szczegółowe informacje znajdują się w <a href="/polityka-plikow-cookies">Polityce Cookies</a>.</p>
 
-        <h3>1. Co to są cookies?</h3>
-        <p>Cookies to małe pliki tekstowe zapisywane w Twoim urządzeniu. Pomagają analizować ruch na stronie i dostosowywać treści.</p>
+        <h1>9. Bezpieczeństwo danych</h1>
+        <p>Administrator stosuje odpowiednie środki techniczne i organizacyjne w celu ochrony danych przed dostępem osób nieuprawnionych, utratą lub zniszczeniem.</p>
 
-        <h3>2. Jakie cookies stosujemy?</h3>
-        <ul>
-          <li><strong>Techniczne</strong> – niezbędne do działania strony (np. sesje, preferencje).</li>
-          <li><strong>Analityczne</strong> – np. Google Analytics, które pomagają nam zrozumieć, jak korzystasz z witryny.</li>
-          <li><strong>Marketingowe</strong> – tylko za zgodą, np. do kampanii reklamowych.</li>
-        </ul>
+        <h1>10. Zmiany w Polityce Prywatności</h1>
+        <p>Administrator zastrzega sobie prawo do wprowadzania zmian w niniejszej Polityce Prywatności. Nowa wersja będzie publikowana w Serwisie wraz z datą aktualizacji.</p>
 
-        <h3>3. Zarządzanie cookies</h3>
-        <p>Możesz samodzielnie zarządzać plikami cookies:</p>
-          <ul>
-            <li>zmieniając ustawienia w przeglądarce,</li>
-            <li>lub klikając „Odrzuć ciasteczka” przy pierwszym wejściu na stronę.</li>
-          </ul>
-        <p>Brak zmiany ustawień oznacza zgodę na ich użycie.</p>
-
-        <h2>Kontakt</h2>
-        <p>W sprawach związanych z ochroną prywatności możesz napisać na:<br/>
-        <strong>kontakt@slowiaczek.pl</strong></p>
+        <p><strong>Data ostatniej aktualizacji:</strong> 13 sierpnia 2025</p>
       </section>
     </main>
   );

@@ -34,79 +34,55 @@ export default function PolitykaPrywatnosci() {
   return (
     <main>
       <section className="polityka">
-        <h1>Polityka Prywatności i Plików Cookies</h1>
+        <h1>Polityka plików cookies</h1>
 
-        <h2>1. Administrator danych osobowych</h2>
-        <p>Administratorem danych osobowych jest:<br />
-        <strong>Grzegorz Słowiaczek</strong><br />
-        kontakt@slowiaczek.pl<br />
-        ul. Przykładowa 1, 00-000 Miasto</p>
+        <p>Niniejsza Polityka plików cookies określa zasady wykorzystywania plików cookies w ramach strony internetowej <strong>slowiaczek.pl</strong> (dalej „Serwis”).</p>
 
-        <h2>2. Jakie dane zbieramy?</h2>
-        <p>Zbieramy dane wyłącznie w zakresie niezbędnym do świadczenia usług i obsługi użytkowników:</p>
+        <h1>1. Czym są pliki cookies?</h1>
+        <p>Pliki cookies (tzw. „ciasteczka”) to niewielkie pliki tekstowe, które są zapisywane w urządzeniu końcowym Użytkownika podczas korzystania z Serwisu. Cookies mogą być odczytywane przez system teleinformatyczny Serwisu lub podmiotów trzecich.</p>
+
+        <h1>2. Rodzaje plików cookies</h1>
         <ul>
-          <li>imię i nazwisko,</li>
-          <li>adres e-mail,</li>
-          <li>numer telefonu,</li>
-          <li>treść wiadomości z formularza kontaktowego,</li>
-          <li>dane potrzebne do realizacji płatności (np. w przypadku subskrypcji).</li>
+          <li><strong>Cookies niezbędne</strong> – umożliwiają korzystanie z podstawowych funkcji Serwisu, np. logowania czy nawigacji.</li>
+          <li><strong>Cookies funkcjonalne</strong> – zapamiętują preferencje Użytkownika, np. język lub układ strony.</li>
+          <li><strong>Cookies analityczne i wydajnościowe</strong> – pomagają zrozumieć, w jaki sposób Użytkownicy korzystają z Serwisu (np. Google Analytics).</li>
+          <li><strong>Cookies marketingowe</strong> – służą do dostarczania spersonalizowanych treści reklamowych.</li>
         </ul>
 
-        <h2>3. Cel i podstawa przetwarzania danych</h2>
-        <p>Dane są przetwarzane w celu:</p>
+        <h1>3. Cele stosowania cookies</h1>
         <ul>
-          <li>udzielenia odpowiedzi na zapytania (art. 6 ust. 1 lit. f RODO – uzasadniony interes),</li>
-          <li>realizacji usług i zamówień (art. 6 ust. 1 lit. b RODO – wykonanie umowy),</li>
-          <li>obsługi płatności (np. Stripe, PayNow),</li>
-          <li>marketingu bezpośredniego (za zgodą).</li>
+          <li>dostosowanie zawartości Serwisu do preferencji Użytkownika,</li>
+          <li>optymalizacja korzystania z Serwisu,</li>
+          <li>analiza statystyk odwiedzin,</li>
+          <li>zapewnienie bezpieczeństwa i niezawodności działania Serwisu,</li>
+          <li>prowadzenie działań marketingowych (po uzyskaniu zgody).</li>
         </ul>
 
-        <h2>4. Czas przechowywania danych</h2>
-        <p>Twoje dane będą przechowywane:</p>
+        <h1>4. Pliki cookies podmiotów trzecich</h1>
+        <p>W Serwisie mogą być wykorzystywane cookies pochodzące od zewnętrznych dostawców, takich jak:</p>
         <ul>
-          <li>przez okres kontaktu + 12 miesięcy,</li>
-          <li>w przypadku zakupu – przez czas wymagany przez przepisy podatkowe (do 6 lat).</li>
+          <li>Google (Google Analytics, Google Ads),</li>
+          <li>Meta (Facebook Pixel),</li>
+          <li>Inne narzędzia analityczne lub reklamowe zgodnie z aktualną konfiguracją Serwisu.</li>
         </ul>
+        <p>Podmioty te mogą wykorzystywać dane zbierane za pomocą cookies do własnych celów zgodnie z ich politykami prywatności.</p>
 
-        <h2>5. Udostępnianie danych</h2>
-        <p>Nie udostępniamy Twoich danych osobom trzecim, chyba że:</p>
+        <h1>5. Podstawa prawna stosowania cookies</h1>
+        <p>Stosowanie cookies, które nie są niezbędne do działania Serwisu, odbywa się na podstawie zgody Użytkownika, wyrażonej przy pierwszym wejściu na stronę lub poprzez narzędzie do zarządzania zgodami.</p>
+
+        <h1>6. Zarządzanie plikami cookies</h1>
+        <p>Użytkownik może w każdej chwili:</p>
         <ul>
-          <li>wymagają tego przepisy prawa,</li>
-          <li>jest to niezbędne do realizacji płatności (np. operatorzy płatności).</li>
+          <li>zmienić ustawienia dotyczące cookies w przeglądarce internetowej,</li>
+          <li>usunąć zapisane pliki cookies,</li>
+          <li>wycofać zgodę za pomocą przycisku „Zmień ustawienia cookies” dostępnego w stopce Serwisu.</li>
         </ul>
+        <p>Ograniczenie stosowania cookies może wpłynąć na działanie niektórych funkcji Serwisu.</p>
 
-        <h2>6. Twoje prawa</h2>
-        <p>Masz prawo do:</p>
-        <ul>
-          <li>dostępu do swoich danych,</li>
-          <li>ich sprostowania, usunięcia lub ograniczenia przetwarzania,</li>
-          <li>sprzeciwu wobec przetwarzania,</li>
-          <li>wniesienia skargi do Prezesa UODO.</li>
-        </ul>
+        <h1>7. Zmiany w Polityce cookies</h1>
+        <p>Administrator zastrzega sobie prawo do wprowadzania zmian w niniejszej Polityce cookies. Aktualna wersja będzie zawsze dostępna na tej stronie.</p>
 
-        <h2>Polityka Plików Cookies</h2>
-
-        <h3>1. Co to są cookies?</h3>
-        <p>Cookies to małe pliki tekstowe zapisywane w Twoim urządzeniu. Pomagają analizować ruch na stronie i dostosowywać treści.</p>
-
-        <h3>2. Jakie cookies stosujemy?</h3>
-        <ul>
-          <li><strong>Techniczne</strong> – niezbędne do działania strony (np. sesje, preferencje).</li>
-          <li><strong>Analityczne</strong> – np. Google Analytics, które pomagają nam zrozumieć, jak korzystasz z witryny.</li>
-          <li><strong>Marketingowe</strong> – tylko za zgodą, np. do kampanii reklamowych.</li>
-        </ul>
-
-        <h3>3. Zarządzanie cookies</h3>
-        <p>Możesz samodzielnie zarządzać plikami cookies:</p>
-          <ul>
-            <li>zmieniając ustawienia w przeglądarce,</li>
-            <li>lub klikając „Odrzuć ciasteczka” przy pierwszym wejściu na stronę.</li>
-          </ul>
-        <p>Brak zmiany ustawień oznacza zgodę na ich użycie.</p>
-
-        <h2>Kontakt</h2>
-        <p>W sprawach związanych z ochroną prywatności możesz napisać na:<br/>
-        <strong>kontakt@slowiaczek.pl</strong></p>
+        <p><strong>Data ostatniej aktualizacji:</strong> 13 sierpnia 2025</p>
       </section>
     </main>
   );
