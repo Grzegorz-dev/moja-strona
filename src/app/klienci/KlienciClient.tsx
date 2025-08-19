@@ -127,7 +127,7 @@ export default function KlienciClient() {
             {/* Standard package */}
             <div className={styles.package}>
               <h3>Opieka nad stroną <span>Standard</span></h3>
-              <p className={styles.price}>39zł <span>/ miesięcznie</span></p>
+              <p className={styles.price}>29zł <span>/ miesięcznie</span></p>
               <ul>
                 <li><span className={styles.check}>✔</span> Regularne aktualizacje</li>
                 <li><span className={styles.check}>✔</span> Bezpłatna pomoc techniczna</li>
@@ -149,7 +149,7 @@ export default function KlienciClient() {
                 </li>
                 <li><span className={styles.check}>✔</span> Stały kontakt</li>
               </ul>
-              <button onClick={() => handleSubscribe("price_1RZ6lpFlXiRA14LC1kCRkVgM")}>Wybierz Standard</button>
+              <button onClick={() => handleSubscribe("price_1RxmcnFlXiRA14LCGvwihpdJ")}>Wybierz Standard</button>
             </div>
 
             {/* Premium package */}
