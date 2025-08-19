@@ -186,7 +186,7 @@ export default function KlienciClient() {
           <div className={`${styles.supportSection} ${styles.columns}`}>
             <div className={styles.package}>
               <h3>Jednorazowa pomoc <span>techniczna</span></h3>
-              <p className={styles.price}><span>od </span>89zł <span>/ cena do ustalenia</span></p>
+              <p className={styles.price}><span>od </span>50 zł <span>/ cena do ustalenia</span></p>
               <ul>
                 <li><span className={styles.check}>✔</span> Naprawa strony (np. błędy)</li>
                 <li><span className={styles.check}>✔</span> Wdrożenie certyfikatu SSL</li>
