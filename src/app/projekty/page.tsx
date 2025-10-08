@@ -54,6 +54,51 @@ export default function Projekty() {
 
           <div className={styles.galleryGrid}>
             <Image
+              src="/images/portfolio/projekt-strony-fizjoterapia-diety-treningi-responsive"
+              alt="Responsywny projekt strony internetowej dla gabinetu fizjoterapii, dietetyki i treningów personalnych, wyświetlany na różnych urządzeniach: komputerze, laptopie, tablecie i smartfonie"
+              width="2085"
+              height="1527"
+              loading="lazy"
+            />
+            <div className={styles.gallerytext}>
+              <a href="https://dachdlalap.pl/" target="_blank" rel="noopener noreferrer">
+                <FaArrowRight className={styles.strzalka} /> Zobacz pełną wersję strony
+              </a>
+            </div>
+          </div>
+
+          <div className={styles.galleryGrid}>
+            <Image
+              src="/images/portfolio/projekt-strony-domki-dla-zwierzat"
+              alt="Responsywny projekt sklepu internetowego z domkami i akcesoriami dla psów i kotów, wyświetlany na różnych urządzeniach: komputerze, laptopie, tablecie i smartfonie"
+              width="2085"
+              height="1527"
+              loading="lazy"
+            />
+            <div className={styles.gallerytext}>
+              <a href="https://dachdlalap.pl/" target="_blank" rel="noopener noreferrer">
+                <FaArrowRight className={styles.strzalka} /> Zobacz pełną wersję strony
+              </a>
+            </div>
+          </div>
+
+          <div className={styles.galleryGrid}>
+            <Image
+              src="/images/portfolio/projekt-strony-pomoc-prawna-responsive"
+              alt="Responsywny projekt strony internetowej dla prawnika zajmującego się unieważnianiem małżeństw w Kościele katolickim, wyświetlany na różnych urządzeniach: komputerze, laptopie, tablecie i smartfonie"
+              width="2085"
+              height="1527"
+              loading="lazy"
+            />
+            <div className={styles.gallerytext}>
+              <a href="https://maniarski-konsultacje.pl/" target="_blank" rel="noopener noreferrer">
+                <FaArrowRight className={styles.strzalka} /> Zobacz pełną wersję strony
+              </a>
+            </div>
+          </div>
+
+          <div className={styles.galleryGrid}>
+            <Image
               src="/images/portfolio/projekt-strony-gabinet-logopedyczny-responsive.webp"
               alt="Responsywny projekt strony internetowej gabinetu logopedycznego dla dzieci i młodzieży, wyświetlany na różnych urządzeniach: komputerze, laptopie, tablecie i smartfonie"
               width="2085"
