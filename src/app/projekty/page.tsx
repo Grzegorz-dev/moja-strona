@@ -54,14 +54,14 @@ export default function Projekty() {
 
           <div className={styles.galleryGrid}>
             <Image
-              src="/images/portfolio/projekt-strony-fizjoterapia-diety-treningi-responsive"
+              src="/images/portfolio/projekt-strony-fizjoterapia-diety-treningi-responsive.webp"
               alt="Responsywny projekt strony internetowej dla gabinetu fizjoterapii, dietetyki i treningów personalnych, wyświetlany na różnych urządzeniach: komputerze, laptopie, tablecie i smartfonie"
               width="2085"
               height="1527"
               loading="lazy"
             />
             <div className={styles.gallerytext}>
-              <a href="https://dachdlalap.pl/" target="_blank" rel="noopener noreferrer">
+              <a href="https://activmed.net/" target="_blank" rel="noopener noreferrer">
                 <FaArrowRight className={styles.strzalka} /> Zobacz pełną wersję strony
               </a>
             </div>
@@ -69,7 +69,7 @@ export default function Projekty() {
 
           <div className={styles.galleryGrid}>
             <Image
-              src="/images/portfolio/projekt-strony-domki-dla-zwierzat"
+              src="/images/portfolio/projekt-strony-domki-dla-zwierzat.webp"
               alt="Responsywny projekt sklepu internetowego z domkami i akcesoriami dla psów i kotów, wyświetlany na różnych urządzeniach: komputerze, laptopie, tablecie i smartfonie"
               width="2085"
               height="1527"
@@ -84,7 +84,7 @@ export default function Projekty() {
 
           <div className={styles.galleryGrid}>
             <Image
-              src="/images/portfolio/projekt-strony-pomoc-prawna-responsive"
+              src="/images/portfolio/projekt-strony-pomoc-prawna-responsive.webp"
               alt="Responsywny projekt strony internetowej dla prawnika zajmującego się unieważnianiem małżeństw w Kościele katolickim, wyświetlany na różnych urządzeniach: komputerze, laptopie, tablecie i smartfonie"
               width="2085"
               height="1527"
