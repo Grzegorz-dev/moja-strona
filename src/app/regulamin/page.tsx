@@ -38,12 +38,12 @@ export default function Regulamin() {
         <p><strong>Data ostatniej aktualizacji:</strong> 04.06.2025</p>
 
         <h2>1. Informacje ogólne</h2>
-        <p>Regulamin określa zasady korzystania z serwisu internetowego dostępnego pod adresem <strong>www.twojadomena.pl</strong>, prowadzonego przez <strong>Grzegorz Słowiaczek</strong>, z siedzibą w Polsce.</p>
+        <p>Regulamin określa zasady korzystania z serwisu internetowego dostępnego pod adresem <strong>www.slowiaczek.pl</strong>, prowadzonego przez <strong>Grzegorz Słowiaczek</strong>, z siedzibą w Polsce.</p>
 
         <h2>2. Definicje</h2>
         <p><strong>Usługodawca</strong> – właściciel serwisu, Grzegorz Słowiaczek.</p>
         <p><strong>Użytkownik</strong> – każda osoba korzystająca z serwisu.</p>
-        <p><strong>Serwis</strong> – strona internetowa działająca pod adresem www.twojadomena.pl.</p>
+        <p><strong>Serwis</strong> – strona internetowa działająca pod adresem www.slowiaczek.pl.</p>
         <p><strong>Usługi</strong> – usługi świadczone drogą elektroniczną, w tym pomoc techniczna, dostęp do treści, subskrypcje płatne.</p>
 
         <h2>3. Rodzaje i zakres usług</h2>
