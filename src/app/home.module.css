@@ -24,9 +24,10 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    max-width: 1210px;
+    max-width: 1410px;
     width: 100%;
-    margin-top: 3vh;
+    margin-top: -5vh;
+    min-height: 100vh;
   }
 
   .heroText {
