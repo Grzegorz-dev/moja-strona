@@ -13,7 +13,7 @@
   /* Baner */
 
   .heroSection {
-    padding: 0 2rem;
+    padding: 0 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -274,6 +274,7 @@
 
     .heroContentWrapper {
       margin-top: -15vh;
+      min-height: auto;
     }
 
     .heroImageWrapper {
