@@ -55,7 +55,7 @@ export default function Kontakt() {
                     <span className={styles.contactIcon}>
                       <FaPhoneAlt />
                     </span>
-                    +48 888 888 555
+                    +48 883 081 448
                   </li>
                   <li>
                     <span className={styles.contactIcon}>
