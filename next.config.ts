@@ -1,22 +1,8 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
-
-  async headers() {
-    return [
-      {
-        source: "/poradnik/:path*",
-        headers: [
-          {
-            key: "X-Robots-Tag",
-            value: "noindex, nofollow, noarchive",
-          },
-        ],
-      },
-    ];
+  experimental: {
+    appDir: true, // <-- pozwala na App Router
   },
 };
-
-export default nextConfig;
 
