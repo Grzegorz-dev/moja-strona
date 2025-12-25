@@ -38,7 +38,16 @@ export async function GET(req: NextRequest) {
   try {
     const token = req.nextUrl.searchParams.get("token");
     if (!token) {
-      return new Response("Brak tokena", { status: 401 });
+        return new Response(
+          JSON.stringify({
+            error: "INVALID_TOKEN",
+            name: err?.name,
+            code: err?.code,
+            message: err?.message,
+          }),
+          { status: 401, headers: { "content-type": "application/json" } }
+        );
+
     }
 
     const { key } = await verifyToken(token);
@@ -68,6 +77,7 @@ export async function GET(req: NextRequest) {
   } catch {
     return new Response("Nieprawidłowy lub wygasły token", { status: 403 });
   }
+  
 }
 
 
