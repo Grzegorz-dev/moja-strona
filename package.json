@@ -10,9 +10,7 @@
   },
   "dependencies": {
     "@stripe/stripe-js": "^7.3.0",
-    "@vercel/blob": "^2.0.0",
     "gray-matter": "^4.0.3",
-    "jose": "^6.1.3",
     "next": "^15.3.6",
     "nodemailer": "^7.0.3",
     "react": "^19.0.0",
