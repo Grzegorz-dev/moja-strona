@@ -65,7 +65,7 @@ export async function GET(req: NextRequest) {
         "Cache-Control": "private, no-store, max-age=0",
       },
     });
-  } catch (err) {
+  } catch {
     return new Response("Nieprawidłowy lub wygasły token", { status: 403 });
   }
 }
