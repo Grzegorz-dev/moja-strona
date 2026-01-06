@@ -54,7 +54,7 @@ export default function Projekty() {
 
           <div className={styles.galleryGrid}>
             <Image
-              src="/images/portfolio/projekt-strony-biuro-rachunkowe.png"
+              src="/images/portfolio/projekt-strony-biuro-rachunkowe.webp"
               alt="Responsywny projekt strony internetowej dla biura rachunkowego, wyświetlany na różnych urządzeniach: komputerze, laptopie, tablecie i smartfonie"
               width="2085"
               height="1527"
@@ -69,7 +69,7 @@ export default function Projekty() {
 
           <div className={styles.galleryGrid}>
             <Image
-              src="/images/portfolio/projekt-sklepu-z-ubraniami.png"
+              src="/images/portfolio/projekt-sklepu-z-ubraniami.webp"
               alt="Responsywny projekt sklepu internetowego z ubraniami, wyświetlany na różnych urządzeniach: komputerze, laptopie, tablecie i smartfonie"
               width="2085"
               height="1527"
@@ -84,7 +84,22 @@ export default function Projekty() {
 
           <div className={styles.galleryGrid}>
             <Image
-              src="/images/portfolio/projekt-sklepu-czesci-motorowe.png"
+              src="/images/portfolio/projekt-strony-nawozy-agro-group.webp"
+              alt="Responsywny projekt strony internetowej dla Agro-Group, wyświetlany na różnych urządzeniach: komputerze, laptopie, tablecie i smartfonie"
+              width="2085"
+              height="1527"
+              loading="lazy"
+            />
+            <div className={styles.gallerytext}>
+              <a href="https://agro-group.com.pl/" target="_blank" rel="noopener noreferrer">
+                <FaArrowRight className={styles.strzalka} /> Zobacz pełną wersję strony
+              </a>
+            </div>
+          </div>
+
+          <div className={styles.galleryGrid}>
+            <Image
+              src="/images/portfolio/projekt-sklepu-czesci-motorowe.webp"
               alt="Responsywny projekt sklepu internetowego z częściami motorowymi, wyświetlany na różnych urządzeniach: komputerze, laptopie, tablecie i smartfonie"
               width="2085"
               height="1527"
