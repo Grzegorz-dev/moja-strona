@@ -54,6 +54,51 @@ export default function Projekty() {
 
           <div className={styles.galleryGrid}>
             <Image
+              src="/images/portfolio/projekt-strony-biuro-rachunkowe.png"
+              alt="Responsywny projekt strony internetowej dla biura rachunkowego, wyświetlany na różnych urządzeniach: komputerze, laptopie, tablecie i smartfonie"
+              width="2085"
+              height="1527"
+              loading="lazy"
+            />
+            <div className={styles.gallerytext}>
+              <a href="https://lublin-podatki.pl/" target="_blank" rel="noopener noreferrer">
+                <FaArrowRight className={styles.strzalka} /> Zobacz pełną wersję strony
+              </a>
+            </div>
+          </div>
+
+          <div className={styles.galleryGrid}>
+            <Image
+              src="/images/portfolio/projekt-sklepu-z-ubraniami.png"
+              alt="Responsywny projekt sklepu internetowego z ubraniami, wyświetlany na różnych urządzeniach: komputerze, laptopie, tablecie i smartfonie"
+              width="2085"
+              height="1527"
+              loading="lazy"
+            />
+            <div className={styles.gallerytext}>
+              <a href="https://szafakobiet.pl/" target="_blank" rel="noopener noreferrer">
+                <FaArrowRight className={styles.strzalka} /> Zobacz pełną wersję strony
+              </a>
+            </div>
+          </div>
+
+          <div className={styles.galleryGrid}>
+            <Image
+              src="/images/portfolio/projekt-sklepu-czesci-motorowe.png"
+              alt="Responsywny projekt sklepu internetowego z częściami motorowymi, wyświetlany na różnych urządzeniach: komputerze, laptopie, tablecie i smartfonie"
+              width="2085"
+              height="1527"
+              loading="lazy"
+            />
+            <div className={styles.gallerytext}>
+              <a href="https://biker24.pl/" target="_blank" rel="noopener noreferrer">
+                <FaArrowRight className={styles.strzalka} /> Zobacz pełną wersję strony
+              </a>
+            </div>
+          </div>
+
+          <div className={styles.galleryGrid}>
+            <Image
               src="/images/portfolio/projekt-strony-fizjoterapia-diety-treningi-responsive.webp"
               alt="Responsywny projekt strony internetowej dla gabinetu fizjoterapii, dietetyki i treningów personalnych, wyświetlany na różnych urządzeniach: komputerze, laptopie, tablecie i smartfonie"
               width="2085"
