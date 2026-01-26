@@ -39,7 +39,6 @@ export default function Menu() {
           <li><Link href="/stronywww">Strony WWW</Link></li>
           <li><Link href="/aplikacje">Aplikacje</Link></li>
           <li><Link href="/projekty">Projekty</Link></li>
-          <li><Link href="/klienci">Dla klientów</Link></li>
           <li><Link href="/cennik">Cennik</Link></li>
           <li><Link href="/blog">Blog</Link></li>
           <li><Link href="/kontakt">Kontakt</Link></li>
@@ -63,7 +62,6 @@ export default function Menu() {
           <li><Link href="/stronywww">Strony WWW</Link></li>
           <li><Link href="/aplikacje">Aplikacje</Link></li>
           <li><Link href="/projekty">Projekty</Link></li>
-          <li><Link href="/klienci">Dla klientów</Link></li>
           <li><Link href="/cennik">Cennik</Link></li>
           <li><Link href="/blog">Blog</Link></li>
           <li><Link href="/kontakt">Kontakt</Link></li>
