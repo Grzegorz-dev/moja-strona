@@ -54,7 +54,7 @@ export default function Projekty() {
 
           <div className={styles.galleryGrid}>
             <Image
-              src="/images/portfolio/projekt-strony-pomoc-prawna-responsive.webp"
+              src="/images/portfolio/projekt-strony-pomoc-prawna-responsive.png"
               alt="Responsywny projekt strony internetowej dla prawnika zajmującego się unieważnianiem małżeństw w Kościele katolickim, wyświetlany na różnych urządzeniach: komputerze, laptopie, tablecie i smartfonie"
               width="2085"
               height="1527"
