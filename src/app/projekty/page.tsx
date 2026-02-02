@@ -54,6 +54,21 @@ export default function Projekty() {
 
           <div className={styles.galleryGrid}>
             <Image
+              src="/images/portfolio/projekt-strony-pomoc-prawna-responsive.webp"
+              alt="Responsywny projekt strony internetowej dla prawnika zajmującego się unieważnianiem małżeństw w Kościele katolickim, wyświetlany na różnych urządzeniach: komputerze, laptopie, tablecie i smartfonie"
+              width="2085"
+              height="1527"
+              loading="lazy"
+            />
+            <div className={styles.gallerytext}>
+              <a href="https://maniarski-konsultacje.pl/" target="_blank" rel="noopener noreferrer">
+                <FaArrowRight className={styles.strzalka} /> Zobacz pełną wersję strony
+              </a>
+            </div>
+          </div>
+
+          <div className={styles.galleryGrid}>
+            <Image
               src="/images/portfolio/projekt-strony-biuro-rachunkowe.webp"
               alt="Responsywny projekt strony internetowej dla biura rachunkowego, wyświetlany na różnych urządzeniach: komputerze, laptopie, tablecie i smartfonie"
               width="2085"
@@ -137,21 +152,6 @@ export default function Projekty() {
             />
             <div className={styles.gallerytext}>
               <a href="https://dachdlalap.pl/" target="_blank" rel="noopener noreferrer">
-                <FaArrowRight className={styles.strzalka} /> Zobacz pełną wersję strony
-              </a>
-            </div>
-          </div>
-
-          <div className={styles.galleryGrid}>
-            <Image
-              src="/images/portfolio/projekt-strony-pomoc-prawna-responsive.webp"
-              alt="Responsywny projekt strony internetowej dla prawnika zajmującego się unieważnianiem małżeństw w Kościele katolickim, wyświetlany na różnych urządzeniach: komputerze, laptopie, tablecie i smartfonie"
-              width="2085"
-              height="1527"
-              loading="lazy"
-            />
-            <div className={styles.gallerytext}>
-              <a href="https://maniarski-konsultacje.pl/" target="_blank" rel="noopener noreferrer">
                 <FaArrowRight className={styles.strzalka} /> Zobacz pełną wersję strony
               </a>
             </div>
