@@ -1,0 +1,338 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Ogólne */
+
+  .container{
+    background: #373636;
+    /*background: #434242;*/
+    font-family: 'Manrope';
+    box-sizing: border-box
+  }
+
+  .banner {
+    height: 500px;
+    background: #2f2f2f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .content {
+    color: white;
+    max-width: 1100px;
+    padding-top: 30px;
+  }
+
+  .content h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 45px;
+    font-family: 'Inter';
+    margin-bottom: 1rem;
+  }
+
+  .content p {
+    color: #d5d5d5;
+    max-width: 1100px;
+    margin: 0 auto 0rem auto;
+    font-size: 28px;
+    font-weight: 100;
+    line-height: 35px;
+  }
+
+  /* Laptops (<= 1680px) */
+  @media (max-width: 1440px) {
+    .banner {
+      height: 450px;
+    }
+
+    .content h1 {
+      font-size: 2.4rem;
+    }
+
+    .content p {
+      font-size: 22px;
+    }
+  }
+
+  /* Tablets (<= 1025px) */
+  @media (max-width: 1025px) {
+    .banner {
+      height: 420px;
+    }
+
+    .content h1 {
+      font-size: 2.4rem;
+      line-height: 40px;
+    }
+
+    .content p {
+      font-size: 22px;
+      line-height: 30px;
+    }
+  }
+
+  /* Smartphones (<= 767px) */
+  @media (max-width: 767px) {
+    .banner {
+      height: 350px;
+    }
+
+    .content h1 {
+      font-size: 2.2rem;
+      line-height: 36px;
+    }
+
+    .content p {
+      font-size: 16px;
+      line-height: 28px;
+    }
+  }
+
+.pricingSection {
+  padding: 2rem;
+  text-align: center;
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+}
+
+.subtitle {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #ccc;
+  margin-top: 0.5rem;
+  margin-bottom: 2.5rem;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.pricingCard {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.pricingCard h3 {
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: 0.6rem;
+  line-height: 27px;
+}
+
+.pricingCard .desc {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #757575;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.pricingCard .price {
+  font-size: 2.3rem;
+  font-weight: bold;
+  color: #cf0031;
+  margin-bottom: 2.8rem;
+  margin-top: 1rem;
+  font-family: 'nunito';
+}
+
+.price .from {
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: #757575;
+  font-family: 'Manrope';
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.features li {
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.features .check {
+  color: #cf0031;
+  font-weight: bold;
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.contactCta {
+  margin-top: 2rem;
+  margin-bottom: 6rem;
+  text-align: center;
+}
+
+.contactCta p {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #ccc;
+  margin-top: 1.5rem;
+  margin-bottom: 3rem;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.contactBtn {
+  padding: 1.2rem 2.2rem;
+  font-size: 1.1rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: #cf0031;
+  color: white;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  margin-top: 2rem;
+}
+
+.contactBtn:hover {
+  box-shadow: 0 4px 60px #cf0031;
+}
+
+.pricingTitle{
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  font-size: 2.1rem;
+}
+
+.pricingGridTitle{
+  color: rgb(36, 36, 36);
+}
+
+.headerCard {
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+
+/* Laptopy (<= 1680px) */
+@media (max-width: 1440px) {
+}
+
+/* Tablet (<= 1023px) */
+@media (max-width: 1025px) {
+  .pricingSection {
+    padding: 2rem 1.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pricingTitle {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    margin-bottom: 2rem;
+  }
+
+  .pricingCard h3 {
+    font-size: 1.3rem;
+  }
+
+  .pricingCard .desc {
+    font-size: 0.95rem;
+    line-height: 1.5rem;
+  }
+
+  .pricingCard .price {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .features li {
+    font-size: 0.85rem;
+  }
+
+  .contactCta p {
+    font-size: 14px;
+  }
+
+  .contactBtn {
+    font-size: 1rem;
+    padding: 1rem 2rem;
+  }
+}
+
+/* Smartfony (<= 767px) */
+@media (max-width: 767px) {
+  .pricingSection {
+    padding: 2rem 1.5rem;
+    max-width: 440px;
+  }
+
+  .headerCard {
+    margin-bottom: 0rem;
+  }
+
+  .pricingTitle {
+    font-size: 1.9rem;
+  }
+
+  .subtitle {
+    font-size: 13.5px;
+  }
+
+  .pricingCard h3 {
+    font-size: 1.7rem;
+  }
+
+  .pricingCard .desc {
+    font-size: 1rem;
+  }
+
+  .pricingCard .price {
+    font-size: 2.5rem;
+    margin-top: 0rem;
+    margin-bottom: 2.6rem;
+  }
+
+  .price .from {
+    font-size: 0.8rem;
+  }
+
+  .features li {
+    font-size: 0.95rem;
+  }
+
+  .contactCta p {
+    font-size: 13.5px;
+  }
+
+  .contactBtn {
+    font-size: 0.95rem;
+    padding: 0.9rem 1.8rem;
+  }
+}
