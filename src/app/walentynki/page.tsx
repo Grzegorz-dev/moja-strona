@@ -33,29 +33,30 @@ export default function WalentynkiPage() {
     return messages[Math.min(noDodges - 1, messages.length - 1)];
   }, [noDodges, messages]);
 
-  function moveNoButton() {
+  function moveNoButtonInsideCard() {
     const area = areaRef.current;
     if (!area) return;
 
     const rect = area.getBoundingClientRect();
 
-    // marginesy + przybliżony rozmiar przycisku
+    // marginesy, żeby nie ucinało + żeby nie wchodziło pod górny tekst
     const padding = 24;
+    const topSafe = 220; // omija nagłówek/obrazek (dopasuj jak chcesz)
+
+    // orientacyjny rozmiar przycisku
     const btnW = 120;
     const btnH = 48;
 
     const x = randomBetween(padding, Math.max(padding, rect.width - btnW - padding));
-    const y = randomBetween(padding, Math.max(padding, rect.height - btnH - padding));
+    const y = randomBetween(topSafe, Math.max(topSafe, rect.height - btnH - padding));
 
     setNoPos({ x, y });
   }
 
   function handleNoDodge() {
-    // od pierwszej próby włączamy "uciekanie"
     if (!noIsFlying) setNoIsFlying(true);
-
     setNoDodges((v) => v + 1);
-    moveNoButton();
+    moveNoButtonInsideCard();
   }
 
   function handleYes() {
@@ -112,12 +113,12 @@ export default function WalentynkiPage() {
         style={{
           width: "min(900px, 96vw)",
           height: "min(520px, 80vh)",
-          position: "relative",
+          position: "relative", // <- WAŻNE: absolute będzie liczone względem tej karty
           borderRadius: 24,
           background: "rgba(255,255,255,.75)",
           boxShadow: "0 10px 30px rgba(0,0,0,.08)",
           padding: 24,
-          overflow: "hidden",
+          overflow: "hidden", // <- WAŻNE: nie wyjdzie poza okno
         }}
       >
         <div style={{ textAlign: "center", marginTop: 12 }}>
@@ -151,56 +152,96 @@ export default function WalentynkiPage() {
           </div>
         </div>
 
-        {/* Start: przyciski obok siebie */}
-        <div
-          style={{
-            display: "flex",
-            gap: 20,
-            justifyContent: "center",
-            marginTop: 34,
-            position: "relative",
-            zIndex: 2,
-          }}
-        >
-          <button
-            onClick={handleYes}
+        {/* START: przyciski obok siebie (tylko zanim "NIE" zacznie uciekać) */}
+        {!noIsFlying && (
+          <div
             style={{
-              padding: "14px 26px",
-              borderRadius: 14,
-              border: 0,
-              fontSize: 18,
-              cursor: "pointer",
-              background: "#ff3b7a",
-              color: "white",
-              boxShadow: "0 10px 20px rgba(255,59,122,.25)",
+              display: "flex",
+              gap: 20,
+              justifyContent: "center",
+              marginTop: 34,
             }}
           >
-            TAK ❤️
-          </button>
+            <button
+              onClick={handleYes}
+              style={{
+                padding: "14px 26px",
+                borderRadius: 14,
+                border: 0,
+                fontSize: 18,
+                cursor: "pointer",
+                background: "#ff3b7a",
+                color: "white",
+                boxShadow: "0 10px 20px rgba(255,59,122,.25)",
+              }}
+            >
+              TAK ❤️
+            </button>
 
-          {/* NIE: na start normalnie obok, dopiero po pierwszym "dodge" staje się absolute */}
-          <button
-            onMouseEnter={handleNoDodge}
-            onFocus={handleNoDodge}
-            onClick={handleNoDodge}
-            style={{
-              position: noIsFlying ? "absolute" : "static",
-              left: noPos.x,
-              top: noPos.y,
-              padding: "12px 22px",
-              borderRadius: 14,
-              border: "1px solid rgba(0,0,0,.12)",
-              background: "white",
-              cursor: "pointer",
-              fontSize: 16,
-              transition: "left 120ms ease, top 120ms ease",
-              userSelect: "none",
-              zIndex: 3,
-            }}
-          >
-            NIE 🙈
-          </button>
-        </div>
+            <button
+              onMouseEnter={handleNoDodge}
+              onFocus={handleNoDodge}
+              onClick={handleNoDodge}
+              style={{
+                padding: "12px 22px",
+                borderRadius: 14,
+                border: "1px solid rgba(0,0,0,.12)",
+                background: "white",
+                cursor: "pointer",
+                fontSize: 16,
+                userSelect: "none",
+              }}
+            >
+              NIE 🙈
+            </button>
+          </div>
+        )}
+
+        {/* Po pierwszej próbie: NIE staje się absolutny w obrębie karty */}
+        {noIsFlying && (
+          <>
+            {/* TAK zostaje na środku */}
+            <div style={{ display: "flex", justifyContent: "center", marginTop: 34 }}>
+              <button
+                onClick={handleYes}
+                style={{
+                  padding: "14px 26px",
+                  borderRadius: 14,
+                  border: 0,
+                  fontSize: 18,
+                  cursor: "pointer",
+                  background: "#ff3b7a",
+                  color: "white",
+                  boxShadow: "0 10px 20px rgba(255,59,122,.25)",
+                }}
+              >
+                TAK ❤️
+              </button>
+            </div>
+
+            <button
+              onMouseEnter={handleNoDodge}
+              onFocus={handleNoDodge}
+              onClick={handleNoDodge}
+              style={{
+                position: "absolute",
+                left: noPos.x,
+                top: noPos.y,
+                padding: "12px 22px",
+                borderRadius: 14,
+                border: "1px solid rgba(0,0,0,.12)",
+                background: "white",
+                cursor: "pointer",
+                fontSize: 16,
+                transition: "left 120ms ease, top 120ms ease",
+                userSelect: "none",
+                zIndex: 10,
+              }}
+            >
+              NIE 🙈
+            </button>
+          </>
+        )}
 
         <div style={{ position: "absolute", bottom: 14, left: 18, fontSize: 13, opacity: 0.65 }}>
           Próby ucieczki “NIE”: {noDodges}
