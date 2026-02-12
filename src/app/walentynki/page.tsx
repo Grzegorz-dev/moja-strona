@@ -16,22 +16,27 @@ export default function WalentynkiPage() {
   const [noPos, setNoPos] = useState<Pos>({ x: 0, y: 0 });
   const [noIsFlying, setNoIsFlying] = useState(false);
 
-  const messages = useMemo(
+  // 5 etapów misia (po każdym "NIE" rośnie etap)
+  const bearStages = useMemo(
     () => [
-      "TAK ❤️",
-      "TAK 🥺",
-      "No proszę 😇",
-      "TAK, obiecuję pizzę 🍕",
-      "To może 100 przytulasów? 🤗",
-      "TAK!!! 😍",
+      { src: "/bear/1.png", caption: "Okej… jeszcze raz 😇" },
+      { src: "/bear/2.png", caption: "Ej no… proszę 🥺" },
+      { src: "/bear/3.png", caption: "To może przytulas? 🤗" },
+      { src: "/bear/4.png", caption: "Obiecuję pizzę 🍕" },
+      { src: "/bear/5.png", caption: "Ostatnia szansa… 😳" },
     ],
     []
   );
 
+  // aktualny etap misia
+  const stageIndex = Math.min(noDodges, bearStages.length - 1);
+  const currentBear = bearStages[stageIndex];
+
+  // tekst pod nagłówkiem (zamiast zmiany napisu na przycisku)
   const subtitle = useMemo(() => {
     if (noDodges === 0) return 'Wybierz mądrze… przycisk “Nie” jest trochę… nieśmiały.';
-    return messages[Math.min(noDodges - 1, messages.length - 1)];
-  }, [noDodges, messages]);
+    return currentBear.caption;
+  }, [noDodges, currentBear.caption]);
 
   function moveNoButtonInsideCard() {
     const area = areaRef.current;
@@ -39,9 +44,11 @@ export default function WalentynkiPage() {
 
     const rect = area.getBoundingClientRect();
 
-    // marginesy, żeby nie ucinało + żeby nie wchodziło pod górny tekst
+    // marginesy
     const padding = 24;
-    const topSafe = 220; // omija nagłówek/obrazek (dopasuj jak chcesz)
+
+    // omijamy górę (nagłówek + miś)
+    const topSafe = 280;
 
     // orientacyjny rozmiar przycisku
     const btnW = 120;
@@ -63,6 +70,7 @@ export default function WalentynkiPage() {
     setAccepted(true);
   }
 
+  // EKRAN PO "TAK"
   if (accepted) {
     return (
       <main
@@ -80,11 +88,12 @@ export default function WalentynkiPage() {
             Oficjalnie: jesteś moją walentynką 🫶
           </p>
 
+          {/* Finałowy obrazek: dwa misie w sercu */}
           <img
-            src="/walentynki.gif"
-            alt="Walentynkowa animacja"
+            src="/bear/final.png"
+            alt="Dwa misie w serduszku"
             style={{
-              width: "min(420px, 92vw)",
+              width: "min(460px, 92vw)",
               borderRadius: 16,
               boxShadow: "0 10px 30px rgba(0,0,0,.12)",
             }}
@@ -98,6 +107,7 @@ export default function WalentynkiPage() {
     );
   }
 
+  // EKRAN PYTANIA
   return (
     <main
       style={{
@@ -113,12 +123,12 @@ export default function WalentynkiPage() {
         style={{
           width: "min(900px, 96vw)",
           height: "min(520px, 80vh)",
-          position: "relative", // <- WAŻNE: absolute będzie liczone względem tej karty
+          position: "relative",
           borderRadius: 24,
           background: "rgba(255,255,255,.75)",
           boxShadow: "0 10px 30px rgba(0,0,0,.08)",
           padding: 24,
-          overflow: "hidden", // <- WAŻNE: nie wyjdzie poza okno
+          overflow: "hidden",
         }}
       >
         <div style={{ textAlign: "center", marginTop: 12 }}>
@@ -143,23 +153,29 @@ export default function WalentynkiPage() {
             {subtitle}
           </p>
 
+          {/* MIŚ: zmienia się po każdym "NIE" */}
           <div style={{ marginTop: 18 }}>
             <img
-              src="/serce.png"
-              alt="Serce"
-              style={{ width: 160, height: 160, objectFit: "contain" }}
+              src={currentBear.src}
+              alt="Miś"
+              style={{
+                width: 220,
+                height: 220,
+                objectFit: "contain",
+                filter: "drop-shadow(0 10px 18px rgba(0,0,0,.12))",
+              }}
             />
           </div>
         </div>
 
-        {/* START: przyciski obok siebie (tylko zanim "NIE" zacznie uciekać) */}
+        {/* START: TAK + NIE obok siebie (zanim zacznie uciekać) */}
         {!noIsFlying && (
           <div
             style={{
               display: "flex",
               gap: 20,
               justifyContent: "center",
-              marginTop: 34,
+              marginTop: 26,
             }}
           >
             <button
@@ -197,11 +213,11 @@ export default function WalentynkiPage() {
           </div>
         )}
 
-        {/* Po pierwszej próbie: NIE staje się absolutny w obrębie karty */}
+        {/* Po pierwszej próbie: NIE ucieka po karcie */}
         {noIsFlying && (
           <>
             {/* TAK zostaje na środku */}
-            <div style={{ display: "flex", justifyContent: "center", marginTop: 34 }}>
+            <div style={{ display: "flex", justifyContent: "center", marginTop: 26 }}>
               <button
                 onClick={handleYes}
                 style={{
@@ -227,13 +243,13 @@ export default function WalentynkiPage() {
                 position: "absolute",
                 left: noPos.x,
                 top: noPos.y,
-                padding: "12px 22px",
+                padding: "13px 25px",
                 borderRadius: 14,
                 border: "1px solid rgba(0,0,0,.12)",
                 background: "white",
                 cursor: "pointer",
-                fontSize: 16,
-                transition: "left 120ms ease, top 120ms ease",
+                fontSize: 18,
+                transition: "left 520ms ease, top 520ms ease",
                 userSelect: "none",
                 zIndex: 10,
               }}
@@ -250,4 +266,3 @@ export default function WalentynkiPage() {
     </main>
   );
 }
-
