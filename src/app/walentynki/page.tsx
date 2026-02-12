@@ -16,7 +16,6 @@ function randomBetween(min: number, max: number) {
 export default function WalentynkiPage() {
   const areaRef = useRef<HTMLDivElement | null>(null);
 
-  const [yesClicks, setYesClicks] = useState(0);
   const [noDodges, setNoDodges] = useState(0);
   const [accepted, setAccepted] = useState(false);
 
@@ -54,7 +53,6 @@ export default function WalentynkiPage() {
   }
 
   function handleYes() {
-    setYesClicks((v) => v + 1);
     setAccepted(true);
   }
 
