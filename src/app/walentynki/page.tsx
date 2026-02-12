@@ -20,10 +20,12 @@ export default function WalentynkiPage() {
   const bearStages = useMemo(
     () => [
       { src: "/bear/1.png", caption: "Okej… jeszcze raz 😇" },
-      { src: "/bear/2.png", caption: "Ej no… proszę 🥺" },
-      { src: "/bear/3.png", caption: "To może przytulas? 🤗" },
-      { src: "/bear/4.png", caption: "Obiecuję pizzę 🍕" },
-      { src: "/bear/5.png", caption: "Ostatnia szansa… 😳" },
+      { src: "/bear/2.png", caption: "Ups… źle Ci się kliknęło?😳" },
+      { src: "/bear/3.png", caption: "Hmm… znowu to samo. Chyba coś się zepsuło... Zaraz to naprawię 🔧" },
+      { src: "/bear/4.png", caption: "Może przytulas Cię przekona? 🤗" },
+      { src: "/bear/5.png", caption: "To dorzucam przytulasa i pizzę 🍕" },
+      { src: "/bear/6.png", caption: "Dobra… przytulas, pizza i masaż 😌" },
+      { src: "/bear/7.png", caption: "Ostatnia szansa… 😳" },
     ],
     []
   );
@@ -90,7 +92,7 @@ export default function WalentynkiPage() {
 
           {/* Finałowy obrazek: dwa misie w sercu */}
           <img
-            src="/bear/final.png"
+            src="/bear/8.png"
             alt="Dwa misie w serduszku"
             style={{
               width: "min(460px, 92vw)",
@@ -133,7 +135,7 @@ export default function WalentynkiPage() {
       >
         <div style={{ textAlign: "center", marginTop: 12 }}>
           <div style={{ fontSize: 14, opacity: 0.7, marginBottom: 8 }}>
-            mini-misja walentynkowa
+            Mini-misja walentynkowa
           </div>
 
           <h1 style={{ fontSize: 40, margin: "0 0 8px" }}>
@@ -243,13 +245,13 @@ export default function WalentynkiPage() {
                 position: "absolute",
                 left: noPos.x,
                 top: noPos.y,
-                padding: "13px 25px",
+                padding: "14px 26px",
                 borderRadius: 14,
                 border: "1px solid rgba(0,0,0,.12)",
                 background: "white",
                 cursor: "pointer",
                 fontSize: 18,
-                transition: "left 520ms ease, top 520ms ease",
+                transition: "left 450ms ease, top 450ms ease",
                 userSelect: "none",
                 zIndex: 10,
               }}
