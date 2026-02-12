@@ -165,6 +165,8 @@ export default function WalentynkiPage() {
                 height: 220,
                 objectFit: "contain",
                 filter: "drop-shadow(0 10px 18px rgba(0,0,0,.12))",
+                marginLeft: "auto",
+                marginRight: "auto",
               }}
             />
           </div>
