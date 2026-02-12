@@ -37,6 +37,7 @@ export default function WalentynkiPage() {
 
   const stageIndex = Math.min(noDodges, bearStages.length - 1);
   const currentBear = bearStages[stageIndex];
+  const noPlaceholderRef = useRef<HTMLButtonElement | null>(null);
 
   const subtitle = useMemo(() => {
     if (noDodges === 0) return 'Wybierz mądrze… przycisk “Nie” jest trochę… nieśmiały.';
@@ -62,11 +63,40 @@ export default function WalentynkiPage() {
     setNoPos({ x, y });
   }
 
-  function handleNoDodge() {
-    if (!noActivated) setNoActivated(true); // od pierwszej próby włączamy "uciekanie"
-    setNoDodges((v) => v + 1);
-    moveNoButtonInsideCard();
+function handleNoDodge() {
+  const area = areaRef.current;
+
+  // Pierwsza aktywacja: startuj animację z miejsca placeholdera
+  if (!noActivated) {
+    setNoActivated(true);
+
+    // ustaw startową pozycję dokładnie tam gdzie stoi placeholder
+    if (area && noPlaceholderRef.current) {
+      const areaRect = area.getBoundingClientRect();
+      const btnRect = noPlaceholderRef.current.getBoundingClientRect();
+
+      const startX = btnRect.left - areaRect.left;
+      const startY = btnRect.top - areaRect.top;
+
+      setNoPos({ x: startX, y: startY });
+
+      // W następnej klatce przesuń do losowego miejsca -> transition zadziała
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setNoDodges((v) => v + 1);
+          moveNoButtonInsideCard();
+        });
+      });
+
+      return; // ważne: kończymy tu, żeby nie "skoczyło" od razu
+    }
   }
+
+  // kolejne razy (już płynnie)
+  setNoDodges((v) => v + 1);
+  moveNoButtonInsideCard();
+}
+
 
   function handleYes() {
     // opcjonalnie: jeśli chcesz wymusić zabawę, odkomentuj:
@@ -198,24 +228,25 @@ export default function WalentynkiPage() {
             TAK ❤️
           </button>
 
-          {!noActivated && (
-            <button
-              onMouseEnter={handleNoDodge}
-              onFocus={handleNoDodge}
-              onClick={handleNoDodge}
-              style={{
-                padding: "12px 22px",
-                borderRadius: 14,
-                border: "1px solid rgba(0,0,0,.12)",
-                background: "white",
-                cursor: "pointer",
-                fontSize: 16,
-                userSelect: "none",
-              }}
-            >
-              NIE 🙈
-            </button>
-          )}
+{!noActivated && (
+  <button
+    ref={noPlaceholderRef}
+    onMouseEnter={handleNoDodge}
+    onFocus={handleNoDodge}
+    onClick={handleNoDodge}
+    style={{
+      padding: "12px 22px",
+      borderRadius: 14,
+      border: "1px solid rgba(0,0,0,.12)",
+      background: "white",
+      cursor: "pointer",
+      fontSize: 16,
+      userSelect: "none",
+    }}
+  >
+    NIE 🙈
+  </button>
+)}
         </div>
 
         {/* Uciekające NIE (po aktywacji) */}
