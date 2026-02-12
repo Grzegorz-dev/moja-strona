@@ -13,15 +13,20 @@ export default function WalentynkiPage() {
 
   const [noDodges, setNoDodges] = useState(0);
   const [accepted, setAccepted] = useState(false);
-  const [noPos, setNoPos] = useState<Pos>({ x: 0, y: 0 });
-  const [noIsFlying, setNoIsFlying] = useState(false);
 
-  // 5 etapów misia (po każdym "NIE" rośnie etap)
+  // UCIEKAJĄCE "NIE"
+  const [noActivated, setNoActivated] = useState(false); // po pierwszej próbie włączamy "uciekanie"
+  const [noPos, setNoPos] = useState<Pos>({ x: 0, y: 0 });
+
+  // Etapy misia (zmieniają się po każdym "NIE")
   const bearStages = useMemo(
     () => [
       { src: "/bear/1.png", caption: "Okej… jeszcze raz 😇" },
-      { src: "/bear/2.png", caption: "Ups… źle Ci się kliknęło?😳" },
-      { src: "/bear/3.png", caption: "Hmm… znowu to samo. Chyba coś się zepsuło... Zaraz to naprawię 🔧" },
+      { src: "/bear/2.png", caption: "Ups… źle Ci się kliknęło? 😳" },
+      {
+        src: "/bear/3.png",
+        caption: "Hmm… znowu to samo. Chyba coś się zepsuło… Zaraz to naprawię 🔧",
+      },
       { src: "/bear/4.png", caption: "Może przytulas Cię przekona? 🤗" },
       { src: "/bear/5.png", caption: "To dorzucam przytulasa i pizzę 🍕" },
       { src: "/bear/6.png", caption: "Dobra… przytulas, pizza i masaż 😌" },
@@ -30,11 +35,9 @@ export default function WalentynkiPage() {
     []
   );
 
-  // aktualny etap misia
   const stageIndex = Math.min(noDodges, bearStages.length - 1);
   const currentBear = bearStages[stageIndex];
 
-  // tekst pod nagłówkiem (zamiast zmiany napisu na przycisku)
   const subtitle = useMemo(() => {
     if (noDodges === 0) return 'Wybierz mądrze… przycisk “Nie” jest trochę… nieśmiały.';
     return currentBear.caption;
@@ -46,11 +49,8 @@ export default function WalentynkiPage() {
 
     const rect = area.getBoundingClientRect();
 
-    // marginesy
     const padding = 24;
-
-    // omijamy górę (nagłówek + miś)
-    const topSafe = 280;
+    const topSafe = 280; // omija nagłówek + misia (jak chcesz, dopasuj)
 
     // orientacyjny rozmiar przycisku
     const btnW = 120;
@@ -63,12 +63,18 @@ export default function WalentynkiPage() {
   }
 
   function handleNoDodge() {
-    if (!noIsFlying) setNoIsFlying(true);
+    if (!noActivated) setNoActivated(true); // od pierwszej próby włączamy "uciekanie"
     setNoDodges((v) => v + 1);
     moveNoButtonInsideCard();
   }
 
   function handleYes() {
+    // opcjonalnie: jeśli chcesz wymusić zabawę, odkomentuj:
+    // if (noDodges === 0) {
+    //   alert("Tak łatwo? 😏 Spróbuj kliknąć 'NIE'…");
+    //   return;
+    // }
+
     setAccepted(true);
   }
 
@@ -90,7 +96,7 @@ export default function WalentynkiPage() {
             Oficjalnie: jesteś moją walentynką 🫶
           </p>
 
-          {/* Finałowy obrazek: dwa misie w sercu */}
+          {/* Finałowy obrazek */}
           <img
             src="/bear/8.png"
             alt="Dwa misie w serduszku"
@@ -98,6 +104,8 @@ export default function WalentynkiPage() {
               width: "min(460px, 92vw)",
               borderRadius: 16,
               boxShadow: "0 10px 30px rgba(0,0,0,.12)",
+              display: "block",
+              margin: "0 auto",
             }}
           />
 
@@ -165,39 +173,32 @@ export default function WalentynkiPage() {
                 height: 220,
                 objectFit: "contain",
                 filter: "drop-shadow(0 10px 18px rgba(0,0,0,.12))",
-                marginLeft: "auto",
-                marginRight: "auto",
+                display: "block",
+                margin: "0 auto",
               }}
             />
           </div>
         </div>
 
-        {/* START: TAK + NIE obok siebie (zanim zacznie uciekać) */}
-        {!noIsFlying && (
-          <div
+        {/* Przycisk TAK + placeholder NIE (tylko przed aktywacją uciekania) */}
+        <div style={{ display: "flex", gap: 20, justifyContent: "center", marginTop: 26 }}>
+          <button
+            onClick={handleYes}
             style={{
-              display: "flex",
-              gap: 20,
-              justifyContent: "center",
-              marginTop: 26,
+              padding: "14px 26px",
+              borderRadius: 14,
+              border: 0,
+              fontSize: 18,
+              cursor: "pointer",
+              background: "#ff3b7a",
+              color: "white",
+              boxShadow: "0 10px 20px rgba(255,59,122,.25)",
             }}
           >
-            <button
-              onClick={handleYes}
-              style={{
-                padding: "14px 26px",
-                borderRadius: 14,
-                border: 0,
-                fontSize: 18,
-                cursor: "pointer",
-                background: "#ff3b7a",
-                color: "white",
-                boxShadow: "0 10px 20px rgba(255,59,122,.25)",
-              }}
-            >
-              TAK ❤️
-            </button>
+            TAK ❤️
+          </button>
 
+          {!noActivated && (
             <button
               onMouseEnter={handleNoDodge}
               onFocus={handleNoDodge}
@@ -214,53 +215,32 @@ export default function WalentynkiPage() {
             >
               NIE 🙈
             </button>
-          </div>
-        )}
+          )}
+        </div>
 
-        {/* Po pierwszej próbie: NIE ucieka po karcie */}
-        {noIsFlying && (
-          <>
-            {/* TAK zostaje na środku */}
-            <div style={{ display: "flex", justifyContent: "center", marginTop: 26 }}>
-              <button
-                onClick={handleYes}
-                style={{
-                  padding: "14px 26px",
-                  borderRadius: 14,
-                  border: 0,
-                  fontSize: 18,
-                  cursor: "pointer",
-                  background: "#ff3b7a",
-                  color: "white",
-                  boxShadow: "0 10px 20px rgba(255,59,122,.25)",
-                }}
-              >
-                TAK ❤️
-              </button>
-            </div>
-
-            <button
-              onMouseEnter={handleNoDodge}
-              onFocus={handleNoDodge}
-              onClick={handleNoDodge}
-              style={{
-                position: "absolute",
-                left: noPos.x,
-                top: noPos.y,
-                padding: "14px 26px",
-                borderRadius: 14,
-                border: "1px solid rgba(0,0,0,.12)",
-                background: "white",
-                cursor: "pointer",
-                fontSize: 18,
-                transition: "left 450ms ease, top 450ms ease",
-                userSelect: "none",
-                zIndex: 10,
-              }}
-            >
-              NIE 🙈
-            </button>
-          </>
+        {/* Uciekające NIE (po aktywacji) */}
+        {noActivated && (
+          <button
+            onMouseEnter={handleNoDodge}
+            onFocus={handleNoDodge}
+            onClick={handleNoDodge}
+            style={{
+              position: "absolute",
+              left: noPos.x,
+              top: noPos.y,
+              padding: "12px 22px",
+              borderRadius: 14,
+              border: "1px solid rgba(0,0,0,.12)",
+              background: "white",
+              cursor: "pointer",
+              fontSize: 16,
+              transition: "left 450ms ease, top 450ms ease",
+              userSelect: "none",
+              zIndex: 10,
+            }}
+          >
+            NIE 🙈
+          </button>
         )}
 
         <div style={{ position: "absolute", bottom: 14, left: 18, fontSize: 13, opacity: 0.65 }}>
