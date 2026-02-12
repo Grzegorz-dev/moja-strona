@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -21,12 +20,26 @@ export default function WalentynkiPage() {
 
   const [noPos, setNoPos] = useState<Pos>({ x: 0, y: 0 });
 
-  const yesText = useMemo(() => {
-    const texts = ["TAK ❤️", "TAK 🥺", "TAK!!! 😍", "No proszę 😇", "TAK, obiecuję randkę 🍕"];
-    return texts[clamp(noDodges, 0, texts.length - 1)];
-  }, [noDodges]);
+  const messages = useMemo(
+    () => [
+      "TAK ❤️",
+      "TAK 🥺",
+      "No proszę 😇",
+      "TAK, obiecuję pizzę 🍕",
+      "To może 100 przytulasów? 🤗",
+      "TAK!!! 😍",
+    ],
+    []
+  );
 
-  // ustaw startową pozycję "Nie" po pierwszym renderze
+  const subtitle = useMemo(() => {
+    if (noDodges === 0) {
+      return 'Wybierz mądrze… przycisk “Nie” jest trochę… nieśmiały.';
+    }
+    return messages[Math.min(noDodges - 1, messages.length - 1)];
+  }, [noDodges, messages]);
+
+  // ustaw startową pozycję ucieczki, żeby od razu nie wyskoczył poza ekran
   useEffect(() => {
     moveNoButton();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -41,7 +54,7 @@ export default function WalentynkiPage() {
     // marginesy, żeby nie ucinało przycisku
     const padding = 24;
 
-    // Zakładamy orientacyjny rozmiar przycisku
+    // orientacyjny rozmiar przycisku NIE
     const btnW = 120;
     const btnH = 48;
 
@@ -67,17 +80,21 @@ export default function WalentynkiPage() {
           background: "linear-gradient(180deg, #ffe6ef, #fff)",
         }}
       >
-        <div style={{ maxWidth: 720, textAlign: "center" }}>
-          <h1 style={{ fontSize: 48, marginBottom: 8 }}>YAAAY!! ❤️</h1>
-          <p style={{ fontSize: 18, marginBottom: 16 }}>
+        <div style={{ maxWidth: 760, textAlign: "center" }}>
+          <h1 style={{ fontSize: 52, marginBottom: 8 }}>YAAAY!! ❤️</h1>
+          <p style={{ fontSize: 18, marginBottom: 18 }}>
             Oficjalnie: jesteś moją walentynką 🫶
           </p>
 
-          {/* Tutaj możesz wrzucić GIF/obrazek */}
+          {/* wrzuć plik do public/walentynki.gif */}
           <img
             src="/walentynki.gif"
             alt="Walentynkowa animacja"
-            style={{ width: "min(420px, 90vw)", borderRadius: 16, boxShadow: "0 10px 30px rgba(0,0,0,.12)" }}
+            style={{
+              width: "min(420px, 92vw)",
+              borderRadius: 16,
+              boxShadow: "0 10px 30px rgba(0,0,0,.12)",
+            }}
           />
 
           <div style={{ marginTop: 18, fontSize: 16 }}>
@@ -87,8 +104,6 @@ export default function WalentynkiPage() {
       </main>
     );
   }
-
-  const yesScale = 1 + Math.min(noDodges, 8) * 0.08; // rośnie do ~1.64x
 
   return (
     <main
@@ -107,7 +122,7 @@ export default function WalentynkiPage() {
           height: "min(520px, 80vh)",
           position: "relative",
           borderRadius: 24,
-          background: "rgba(255,255,255,.7)",
+          background: "rgba(255,255,255,.75)",
           boxShadow: "0 10px 30px rgba(0,0,0,.08)",
           padding: 24,
           overflow: "hidden",
@@ -118,12 +133,24 @@ export default function WalentynkiPage() {
             mini-misja walentynkowa
           </div>
 
-          <h1 style={{ fontSize: 40, margin: "0 0 8px" }}>Zostaniesz moją walentynką? 💘</h1>
-          <p style={{ fontSize: 18, margin: 0, opacity: 0.85 }}>
-            Wybierz mądrze… przycisk “Nie” jest trochę… nieśmiały.
+          <h1 style={{ fontSize: 40, margin: "0 0 8px" }}>
+            Zostaniesz moją walentynką? 💘
+          </h1>
+
+          <p
+            style={{
+              fontSize: 18,
+              margin: 0,
+              minHeight: 28,
+              transition: "all 0.2s ease",
+              color: noDodges > 0 ? "#ff3b7a" : "inherit",
+              fontWeight: noDodges > 0 ? 600 : 400,
+            }}
+          >
+            {subtitle}
           </p>
 
-          {/* możesz dać tu obrazek */}
+          {/* wrzuć plik do public/serce.png */}
           <div style={{ marginTop: 18 }}>
             <img
               src="/serce.png"
@@ -133,16 +160,22 @@ export default function WalentynkiPage() {
           </div>
         </div>
 
-        {/* YES */}
-        <div style={{ display: "flex", gap: 16, justifyContent: "center", marginTop: 24 }}>
+        {/* Przyciski obok siebie na start */}
+        <div
+          style={{
+            display: "flex",
+            gap: 20,
+            justifyContent: "center",
+            marginTop: 34,
+            position: "relative",
+          }}
+        >
           <button
             onClick={handleYes}
             style={{
-              transform: `scale(${yesScale})`,
-              transition: "transform 120ms ease",
-              padding: "14px 22px",
+              padding: "14px 26px",
               borderRadius: 14,
-              border: "0",
+              border: 0,
               fontSize: 18,
               cursor: "pointer",
               background: "#ff3b7a",
@@ -150,38 +183,37 @@ export default function WalentynkiPage() {
               boxShadow: "0 10px 20px rgba(255,59,122,.25)",
             }}
           >
-            {yesText}
+            TAK ❤️
+          </button>
+
+          <button
+            onMouseEnter={moveNoButton}
+            onFocus={moveNoButton}
+            onClick={moveNoButton}
+            style={{
+              // NA START jest obok, a po pierwszej ucieczce przechodzi na absolute
+              position: noDodges === 0 ? "static" : "absolute",
+              left: noPos.x,
+              top: noPos.y,
+              padding: "12px 22px",
+              borderRadius: 14,
+              border: "1px solid rgba(0,0,0,.12)",
+              background: "white",
+              cursor: "pointer",
+              fontSize: 16,
+              transition: "left 120ms ease, top 120ms ease",
+              userSelect: "none",
+            }}
+          >
+            NIE 🙈
           </button>
         </div>
 
-        {/* NO (ucieka) */}
-        <button
-          onMouseEnter={moveNoButton}
-          onFocus={moveNoButton}
-          // opcjonalnie: jak jednak kliknie, też uciekaj
-          onClick={moveNoButton}
-          style={{
-            position: "absolute",
-            left: noPos.x,
-            top: noPos.y,
-            padding: "12px 20px",
-            borderRadius: 14,
-            border: "1px solid rgba(0,0,0,.12)",
-            background: "white",
-            cursor: "pointer",
-            fontSize: 16,
-            transition: "left 120ms ease, top 120ms ease",
-            userSelect: "none",
-          }}
-          aria-label="Nie"
-        >
-          NIE 🙈
-        </button>
-
         <div style={{ position: "absolute", bottom: 14, left: 18, fontSize: 13, opacity: 0.65 }}>
-          Próby ucieczki “NIE”: {noDodges}
+          Próby ucieczki “NIE”: {Math.max(0, noDodges - 1)}
         </div>
       </div>
     </main>
   );
 }
+
