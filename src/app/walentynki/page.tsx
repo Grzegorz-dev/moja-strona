@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 type Pos = { x: number; y: number };
-
 
 function randomBetween(min: number, max: number) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -14,8 +13,8 @@ export default function WalentynkiPage() {
 
   const [noDodges, setNoDodges] = useState(0);
   const [accepted, setAccepted] = useState(false);
-
   const [noPos, setNoPos] = useState<Pos>({ x: 0, y: 0 });
+  const [noIsFlying, setNoIsFlying] = useState(false);
 
   const messages = useMemo(
     () => [
@@ -30,17 +29,9 @@ export default function WalentynkiPage() {
   );
 
   const subtitle = useMemo(() => {
-    if (noDodges === 0) {
-      return 'Wybierz mądrze… przycisk “Nie” jest trochę… nieśmiały.';
-    }
+    if (noDodges === 0) return 'Wybierz mądrze… przycisk “Nie” jest trochę… nieśmiały.';
     return messages[Math.min(noDodges - 1, messages.length - 1)];
   }, [noDodges, messages]);
-
-  // ustaw startową pozycję ucieczki, żeby od razu nie wyskoczył poza ekran
-  useEffect(() => {
-    moveNoButton();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   function moveNoButton() {
     const area = areaRef.current;
@@ -48,10 +39,8 @@ export default function WalentynkiPage() {
 
     const rect = area.getBoundingClientRect();
 
-    // marginesy, żeby nie ucinało przycisku
+    // marginesy + przybliżony rozmiar przycisku
     const padding = 24;
-
-    // orientacyjny rozmiar przycisku NIE
     const btnW = 120;
     const btnH = 48;
 
@@ -59,7 +48,14 @@ export default function WalentynkiPage() {
     const y = randomBetween(padding, Math.max(padding, rect.height - btnH - padding));
 
     setNoPos({ x, y });
+  }
+
+  function handleNoDodge() {
+    // od pierwszej próby włączamy "uciekanie"
+    if (!noIsFlying) setNoIsFlying(true);
+
     setNoDodges((v) => v + 1);
+    moveNoButton();
   }
 
   function handleYes() {
@@ -83,7 +79,6 @@ export default function WalentynkiPage() {
             Oficjalnie: jesteś moją walentynką 🫶
           </p>
 
-          {/* wrzuć plik do public/walentynki.gif */}
           <img
             src="/walentynki.gif"
             alt="Walentynkowa animacja"
@@ -147,7 +142,6 @@ export default function WalentynkiPage() {
             {subtitle}
           </p>
 
-          {/* wrzuć plik do public/serce.png */}
           <div style={{ marginTop: 18 }}>
             <img
               src="/serce.png"
@@ -157,7 +151,7 @@ export default function WalentynkiPage() {
           </div>
         </div>
 
-        {/* Przyciski obok siebie na start */}
+        {/* Start: przyciski obok siebie */}
         <div
           style={{
             display: "flex",
@@ -165,6 +159,7 @@ export default function WalentynkiPage() {
             justifyContent: "center",
             marginTop: 34,
             position: "relative",
+            zIndex: 2,
           }}
         >
           <button
@@ -183,13 +178,13 @@ export default function WalentynkiPage() {
             TAK ❤️
           </button>
 
+          {/* NIE: na start normalnie obok, dopiero po pierwszym "dodge" staje się absolute */}
           <button
-            onMouseEnter={moveNoButton}
-            onFocus={moveNoButton}
-            onClick={moveNoButton}
+            onMouseEnter={handleNoDodge}
+            onFocus={handleNoDodge}
+            onClick={handleNoDodge}
             style={{
-              // NA START jest obok, a po pierwszej ucieczce przechodzi na absolute
-              position: noDodges === 0 ? "static" : "absolute",
+              position: noIsFlying ? "absolute" : "static",
               left: noPos.x,
               top: noPos.y,
               padding: "12px 22px",
@@ -200,6 +195,7 @@ export default function WalentynkiPage() {
               fontSize: 16,
               transition: "left 120ms ease, top 120ms ease",
               userSelect: "none",
+              zIndex: 3,
             }}
           >
             NIE 🙈
@@ -207,7 +203,7 @@ export default function WalentynkiPage() {
         </div>
 
         <div style={{ position: "absolute", bottom: 14, left: 18, fontSize: 13, opacity: 0.65 }}>
-          Próby ucieczki “NIE”: {Math.max(0, noDodges - 1)}
+          Próby ucieczki “NIE”: {noDodges}
         </div>
       </div>
     </main>
