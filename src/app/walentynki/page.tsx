@@ -181,7 +181,7 @@ export default function WalentynkiPage() {
           </div>
 
           <h1   style={{
-                fontSize: "clamp(30px, 5vw, 36px)",
+                fontSize: "clamp(32px, 5vw, 36px)",
                 margin: "0 0 8px",
               }}>
             Zostaniesz moją walentynką? 💘
