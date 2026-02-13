@@ -10,15 +10,16 @@ function randomBetween(min: number, max: number) {
 
 export default function WalentynkiPage() {
   const areaRef = useRef<HTMLDivElement | null>(null);
+  const noPlaceholderRef = useRef<HTMLButtonElement | null>(null);
 
   const [noDodges, setNoDodges] = useState(0);
   const [accepted, setAccepted] = useState(false);
 
   // UCIEKAJĄCE "NIE"
-  const [noActivated, setNoActivated] = useState(false); // po pierwszej próbie włączamy "uciekanie"
+  const [noActivated, setNoActivated] = useState(false);
   const [noPos, setNoPos] = useState<Pos>({ x: 0, y: 0 });
 
-  // Etapy misia (zmieniają się po każdym "NIE")
+  // Etapy misia (po każdym "NIE" rośnie etap)
   const bearStages = useMemo(
     () => [
       { src: "/bear/1.png", caption: "Okej… jeszcze raz 😇" },
@@ -37,7 +38,6 @@ export default function WalentynkiPage() {
 
   const stageIndex = Math.min(noDodges, bearStages.length - 1);
   const currentBear = bearStages[stageIndex];
-  const noPlaceholderRef = useRef<HTMLButtonElement | null>(null);
 
   const subtitle = useMemo(() => {
     if (noDodges === 0) return 'Wybierz mądrze… przycisk “Nie” jest trochę… nieśmiały.';
@@ -50,8 +50,11 @@ export default function WalentynkiPage() {
 
     const rect = area.getBoundingClientRect();
 
-    const padding = 24;
-    const topSafe = 280; // omija nagłówek + misia (jak chcesz, dopasuj)
+    const padding = 16;
+
+    // Dynamiczny "bezpieczny top" — lepiej działa na telefonie niż stałe 280
+    // (omija nagłówek + misia, a jednocześnie daje miejsce na uciekanie)
+    const topSafe = Math.floor(rect.height * 0.52);
 
     // orientacyjny rozmiar przycisku
     const btnW = 120;
@@ -63,43 +66,44 @@ export default function WalentynkiPage() {
     setNoPos({ x, y });
   }
 
-function handleNoDodge() {
-  const area = areaRef.current;
+  // Obsługa "NIE" tak, żeby:
+  // - na desktopie działał hover
+  // - na mobile działał tap (pointer)
+  // - pierwsza ucieczka była płynna (startuje z miejsca placeholdera)
+  function handleNoDodge() {
+    const area = areaRef.current;
 
-  // Pierwsza aktywacja: startuj animację z miejsca placeholdera
-  if (!noActivated) {
-    setNoActivated(true);
+    // Pierwsza aktywacja: ustaw startową pozycję tam gdzie placeholder
+    if (!noActivated) {
+      setNoActivated(true);
 
-    // ustaw startową pozycję dokładnie tam gdzie stoi placeholder
-    if (area && noPlaceholderRef.current) {
-      const areaRect = area.getBoundingClientRect();
-      const btnRect = noPlaceholderRef.current.getBoundingClientRect();
+      if (area && noPlaceholderRef.current) {
+        const areaRect = area.getBoundingClientRect();
+        const btnRect = noPlaceholderRef.current.getBoundingClientRect();
 
-      const startX = btnRect.left - areaRect.left;
-      const startY = btnRect.top - areaRect.top;
+        const startX = btnRect.left - areaRect.left;
+        const startY = btnRect.top - areaRect.top;
 
-      setNoPos({ x: startX, y: startY });
+        setNoPos({ x: startX, y: startY });
 
-      // W następnej klatce przesuń do losowego miejsca -> transition zadziała
-      requestAnimationFrame(() => {
+        // w następnej klatce -> losowa pozycja (transition robi animację)
         requestAnimationFrame(() => {
-          setNoDodges((v) => v + 1);
-          moveNoButtonInsideCard();
+          requestAnimationFrame(() => {
+            setNoDodges((v) => v + 1);
+            moveNoButtonInsideCard();
+          });
         });
-      });
 
-      return; // ważne: kończymy tu, żeby nie "skoczyło" od razu
+        return;
+      }
     }
+
+    setNoDodges((v) => v + 1);
+    moveNoButtonInsideCard();
   }
 
-  // kolejne razy (już płynnie)
-  setNoDodges((v) => v + 1);
-  moveNoButtonInsideCard();
-}
-
-
   function handleYes() {
-    // opcjonalnie: jeśli chcesz wymusić zabawę, odkomentuj:
+    // Opcjonalnie, żeby nie kliknęła od razu:
     // if (noDodges === 0) {
     //   alert("Tak łatwo? 😏 Spróbuj kliknąć 'NIE'…");
     //   return;
@@ -126,7 +130,6 @@ function handleNoDodge() {
             Oficjalnie: jesteś moją walentynką 🫶
           </p>
 
-          {/* Finałowy obrazek */}
           <img
             src="/bear/8.png"
             alt="Dwa misie w serduszku"
@@ -154,7 +157,7 @@ function handleNoDodge() {
         minHeight: "100vh",
         display: "grid",
         placeItems: "center",
-        padding: 24,
+        padding: 16,
         background: "linear-gradient(180deg, #fff, #ffe6ef)",
       }}
     >
@@ -162,21 +165,21 @@ function handleNoDodge() {
         ref={areaRef}
         style={{
           width: "min(900px, 96vw)",
-          height: "min(520px, 80vh)",
+          height: "min(620px, 88vh)", // trochę wyżej dla mobile
           position: "relative",
           borderRadius: 24,
           background: "rgba(255,255,255,.75)",
           boxShadow: "0 10px 30px rgba(0,0,0,.08)",
-          padding: 24,
+          padding: 20,
           overflow: "hidden",
         }}
       >
-        <div style={{ textAlign: "center", marginTop: 12 }}>
+        <div style={{ textAlign: "center", marginTop: 8 }}>
           <div style={{ fontSize: 14, opacity: 0.7, marginBottom: 8 }}>
             Mini-misja walentynkowa
           </div>
 
-          <h1 style={{ fontSize: 40, margin: "0 0 8px" }}>
+          <h1 style={{ fontSize: 36, margin: "0 0 8px" }}>
             Zostaniesz moją walentynką? 💘
           </h1>
 
@@ -188,13 +191,13 @@ function handleNoDodge() {
               transition: "all 0.2s ease",
               color: noDodges > 0 ? "#ff3b7a" : "inherit",
               fontWeight: noDodges > 0 ? 600 : 400,
+              paddingInline: 12,
             }}
           >
             {subtitle}
           </p>
 
-          {/* MIŚ: zmienia się po każdym "NIE" */}
-          <div style={{ marginTop: 18 }}>
+          <div style={{ marginTop: 16 }}>
             <img
               src={currentBear.src}
               alt="Miś"
@@ -205,13 +208,22 @@ function handleNoDodge() {
                 filter: "drop-shadow(0 10px 18px rgba(0,0,0,.12))",
                 display: "block",
                 margin: "0 auto",
+                maxWidth: "70vw",
               }}
             />
           </div>
         </div>
 
-        {/* Przycisk TAK + placeholder NIE (tylko przed aktywacją uciekania) */}
-        <div style={{ display: "flex", gap: 20, justifyContent: "center", marginTop: 26 }}>
+        {/* TAK + Placeholder NIE (przed aktywacją) */}
+        <div
+          style={{
+            display: "flex",
+            gap: 16,
+            justifyContent: "center",
+            marginTop: 18,
+            flexWrap: "wrap",
+          }}
+        >
           <button
             onClick={handleYes}
             style={{
@@ -223,38 +235,40 @@ function handleNoDodge() {
               background: "#ff3b7a",
               color: "white",
               boxShadow: "0 10px 20px rgba(255,59,122,.25)",
+              touchAction: "manipulation",
             }}
           >
             TAK ❤️
           </button>
 
-{!noActivated && (
-  <button
-    ref={noPlaceholderRef}
-    onMouseEnter={handleNoDodge}
-    onFocus={handleNoDodge}
-    onClick={handleNoDodge}
-    style={{
-      padding: "12px 22px",
-      borderRadius: 14,
-      border: "1px solid rgba(0,0,0,.12)",
-      background: "white",
-      cursor: "pointer",
-      fontSize: 16,
-      userSelect: "none",
-    }}
-  >
-    NIE 🙈
-  </button>
-)}
+          {!noActivated && (
+            <button
+              ref={noPlaceholderRef}
+              onPointerDown={handleNoDodge} // ✅ działa na telefonie
+              onMouseEnter={handleNoDodge} // ✅ działa na PC
+              onFocus={handleNoDodge}
+              style={{
+                padding: "12px 22px",
+                borderRadius: 14,
+                border: "1px solid rgba(0,0,0,.12)",
+                background: "white",
+                cursor: "pointer",
+                fontSize: 16,
+                userSelect: "none",
+                touchAction: "manipulation",
+              }}
+            >
+              NIE 🙈
+            </button>
+          )}
         </div>
 
         {/* Uciekające NIE (po aktywacji) */}
         {noActivated && (
           <button
-            onMouseEnter={handleNoDodge}
+            onPointerDown={handleNoDodge} // ✅ telefon
+            onMouseEnter={handleNoDodge} // ✅ PC
             onFocus={handleNoDodge}
-            onClick={handleNoDodge}
             style={{
               position: "absolute",
               left: noPos.x,
@@ -268,13 +282,14 @@ function handleNoDodge() {
               transition: "left 450ms ease, top 450ms ease",
               userSelect: "none",
               zIndex: 10,
+              touchAction: "manipulation",
             }}
           >
             NIE 🙈
           </button>
         )}
 
-        <div style={{ position: "absolute", bottom: 14, left: 18, fontSize: 13, opacity: 0.65 }}>
+        <div style={{ position: "absolute", bottom: 12, left: 16, fontSize: 13, opacity: 0.65 }}>
           Próby ucieczki “NIE”: {noDodges}
         </div>
       </div>
