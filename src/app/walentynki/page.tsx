@@ -38,6 +38,7 @@ export default function WalentynkiPage() {
 
   const stageIndex = Math.min(noDodges, bearStages.length - 1);
   const currentBear = bearStages[stageIndex];
+  
 
   const subtitle = useMemo(() => {
     if (noDodges === 0) return 'Wybierz mądrze… przycisk “Nie” jest trochę… nieśmiały.';
@@ -157,7 +158,7 @@ export default function WalentynkiPage() {
         minHeight: "100vh",
         display: "grid",
         placeItems: "center",
-        padding: 16,
+        padding: 0,
         background: "linear-gradient(180deg, #fff, #ffe6ef)",
       }}
     >
@@ -179,7 +180,10 @@ export default function WalentynkiPage() {
             Mini-misja walentynkowa
           </div>
 
-          <h1 style={{ fontSize: 36, margin: "0 0 8px" }}>
+          <h1   style={{
+                fontSize: "clamp(30px, 5vw, 36px)",
+                margin: "0 0 8px",
+              }}>
             Zostaniesz moją walentynką? 💘
           </h1>
 
