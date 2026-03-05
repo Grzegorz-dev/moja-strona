@@ -219,21 +219,6 @@ export default function Projekty() {
 
           <div className={styles.galleryGrid}>
             <Image
-              src="images/portfolio/projekt-strony-kosmetologia-responsive.webp"
-              alt="Strona internetowa gabinetu kosmetycznego – elegancki design z wizerunkiem właścicielki, oferta zabiegów i formularz rezerwacji na laptopie, komputerze, tablecie i telefonie"
-              width="2085"
-              height="1527"
-              loading="lazy"
-            />
-            <div className={styles.gallerytext}>
-              <a href="https://tabubeauty.pl/" target="_blank" rel="noopener noreferrer">
-                <FaArrowRight className={styles.strzalka} /> Zobacz pełną wersję strony
-              </a>
-            </div>
-          </div>
-
-          <div className={styles.galleryGrid}>
-            <Image
               src="images/portfolio/projekt-strony-deweloper-luksusowe-nieruchomosci.webp"
               alt="Strona internetowa biura nieruchomości – wyszukiwarka ofert i lista mieszkań, widoczna na komputerze, laptopie, tablecie i smartfonie"
               width="2085"
